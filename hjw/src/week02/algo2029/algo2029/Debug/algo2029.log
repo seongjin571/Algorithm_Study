@@ -1,0 +1,5 @@
+﻿  algo2029.cpp
+c:\users\admin\documents\visual studio 2015\algorithm_study\hjw\src\week02\algo2029\algo2029\algo2029.cpp(12): warning C4700: 초기화되지 않은 'a' 지역 변수를 사용했습니다.
+c:\users\admin\documents\visual studio 2015\algorithm_study\hjw\src\week02\algo2029\algo2029\algo2029.cpp(12): warning C4700: 초기화되지 않은 'b' 지역 변수를 사용했습니다.
+  algo2029.vcxproj -> C:\Users\admin\Documents\Visual Studio 2015\algorithm_study\hjw\src\week02\algo2029\Debug\algo2029.exe
+  algo2029.vcxproj -> C:\Users\admin\Documents\Visual Studio 2015\algorithm_study\hjw\src\week02\algo2029\Debug\algo2029.pdb (Full PDB)
