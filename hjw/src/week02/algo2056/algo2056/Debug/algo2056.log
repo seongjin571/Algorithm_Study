@@ -1,0 +1,4 @@
+﻿  algo2056.cpp
+c:\users\admin\documents\visual studio 2015\algorithm_study\hjw\src\week02\algo2056\algo2056\algo2056.cpp(6): warning C4101: 'x' :참조되지 않은 지역 변수입니다.
+  algo2056.vcxproj -> C:\Users\admin\Documents\Visual Studio 2015\algorithm_study\hjw\src\week02\algo2056\Debug\algo2056.exe
+  algo2056.vcxproj -> C:\Users\admin\Documents\Visual Studio 2015\algorithm_study\hjw\src\week02\algo2056\Debug\algo2056.pdb (Full PDB)
