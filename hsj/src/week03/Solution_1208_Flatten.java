@@ -13,7 +13,7 @@ public class Solution_1208_Flatten {
 		return  array[array.length-1] - array[0];
 	}
 	
-	static int getHeightDiff(int dumpNum,int[] array) {
+	static int getHeightDiff(int dumpNum, int[] array) {
 		Arrays.sort(array);
 		int dumpResult = 0;
 		for(int dumpCount = 0; dumpCount < dumpNum; dumpCount++) {
