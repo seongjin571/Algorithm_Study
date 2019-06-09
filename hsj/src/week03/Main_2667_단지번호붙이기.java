@@ -14,7 +14,7 @@ public class Main_2667_단지번호붙이기 {
 	static int[][] house = new int[squareSize][squareSize];
 	static Queue<Integer> queue = new LinkedList<>();
 	static int count;
-	
+
 	static void checkPosition(int iRoad, int jRoad) {
 		if (house[iRoad][jRoad] == 1 && !visit[iRoad][jRoad]) {
 			visit[iRoad][jRoad] = true;
@@ -27,57 +27,25 @@ public class Main_2667_단지번호붙이기 {
 	static void getOneComplex(List<Integer> houseList) {
 		count = 1;
 		while (!queue.isEmpty()) {
-			
-			int iRoad  = queue.poll();
+			int iRoad = queue.poll();
 			int jRoad = queue.poll();
-
-			if (iRoad == squareSize - 1 && jRoad == squareSize - 1) {
-				checkPosition(iRoad, jRoad - 1);
-				checkPosition(iRoad - 1, jRoad);
-			}
-			else if (iRoad == squareSize - 1 && jRoad == 0) {
-				checkPosition(iRoad, jRoad + 1);
-				checkPosition(iRoad - 1, jRoad);
-			}
-			else if (iRoad == 0 && jRoad == 0) {
-				checkPosition(iRoad, jRoad + 1);
+			
+			if (iRoad+1 <= squareSize-1) 
 				checkPosition(iRoad + 1, jRoad);
-			} 
-			else if (iRoad == 0 && jRoad == squareSize - 1) {
-				checkPosition(iRoad, jRoad - 1);
-				checkPosition(iRoad + 1, jRoad);
-			} 
-			else if (jRoad == 0) {
-				checkPosition(iRoad + 1, jRoad);
-				checkPosition(iRoad, jRoad + 1);
+			
+			if (iRoad-1 >= 0) 
 				checkPosition(iRoad - 1, jRoad);
-			}
-			else if (iRoad == 0) {
-				checkPosition(iRoad + 1, jRoad);
+			
+			if (jRoad+1 <= squareSize-1) 
 				checkPosition(iRoad, jRoad + 1);
+			
+			if (jRoad-1 >= 0) 
 				checkPosition(iRoad, jRoad - 1);
-			} 
-			else if (iRoad == squareSize - 1) {
-				checkPosition(iRoad, jRoad - 1);
-				checkPosition(iRoad, jRoad + 1);
-				checkPosition(iRoad - 1, jRoad);
-			} 
-			else if (jRoad == squareSize - 1) {
-				checkPosition(iRoad + 1, jRoad);
-				checkPosition(iRoad, jRoad - 1);
-				checkPosition(iRoad - 1, jRoad);
-			}
-			else {
-				checkPosition(iRoad - 1, jRoad);
-				checkPosition(iRoad + 1, jRoad);
-				checkPosition(iRoad, jRoad - 1);
-				checkPosition(iRoad, jRoad + 1);
-			}
 		}
 		houseList.add(count);
 	}
 
-	static void findComplex() {
+	static void searchComplex() {
 		List<Integer> houseList = new ArrayList<>();
 		int totalComplexNum = 0;
 		for (int iRoad = 0; iRoad < squareSize; iRoad++) {
@@ -93,7 +61,7 @@ public class Main_2667_단지번호붙이기 {
 		}
 		System.out.println(totalComplexNum);
 		Collections.sort(houseList);
-		for(int i : houseList)
+		for (int i : houseList)
 			System.out.println(i);
 	}
 
@@ -104,6 +72,6 @@ public class Main_2667_단지번호붙이기 {
 				house[i][j] = rowNum.charAt(j) - '0';
 			}
 		}
-		findComplex();
+		searchComplex();
 	}
 }
