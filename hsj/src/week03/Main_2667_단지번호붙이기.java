@@ -99,8 +99,10 @@ public class Main_2667_단지번호붙이기 {
 
 	public static void main(String[] args) {
 		for (int i = 0; i < squareSize; i++) {
-			for (int j = 0; j < squareSize; j++)
-				house[i][j] = scan.nextInt();
+			String rowNum = scan.next();
+			for (int j = 0; j < squareSize; j++) {
+				house[i][j] = rowNum.charAt(j) - '0';
+			}
 		}
 		findComplex();
 	}
