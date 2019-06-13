@@ -1,4 +1,4 @@
-package D2;
+package d2;
 
 import java.util.Scanner;
 
@@ -16,7 +16,7 @@ public class Solution_1948_날짜_계산기 {
 	public static void main(String[]args) {
 		Scanner scan = new Scanner(System.in);
 		int testNum = scan.nextInt();
-		for(int i = 1; i < testNum; i++) {
+		for(int i = 1; i <= testNum; i++) {
 			int firstMon = scan.nextInt();
 			int firstDay = scan.nextInt();
 			int secondMon = scan.nextInt();
