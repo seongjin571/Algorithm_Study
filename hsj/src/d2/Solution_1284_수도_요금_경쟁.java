@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class Solution_1284_수도_요금_경쟁 {
 	static int printLowCost(int aCopCost, int basicL, int bCopCost, int bExtraCost, int useWater) {
-		int lowCost;
 		int aCost = aCopCost*useWater;
 		int bCost;
 		if(basicL >= useWater) {
