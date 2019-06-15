@@ -4,42 +4,45 @@ import java.util.Scanner;
 
 public class Solution_1974_스도쿠_검증 {
 	static boolean checkAll(int[][] sudoku, int i, int j, boolean[] exist, boolean[] existSquare, int arrayControlNum) {
-		if (exist[sudoku[i][j]] == true)
+		if (exist[sudoku[i][j]] == true || exist[sudoku[j][i] + 10] == true)
 			return false;
-		exist[sudoku[i][j]] = true;
-		
-		if (exist[sudoku[j][i] + 10] == true)
+		else {
+			exist[sudoku[i][j]] = true;
+			exist[sudoku[j][i] + 10] = true;
+		}
+		if (existSquare[sudoku[i][j] + arrayControlNum] == true)
 			return false;
-		exist[sudoku[j][i] + 10] = true;
-		
-		if(existSquare[sudoku[i][j] + arrayControlNum] == true)
-			return false;
-		existSquare[sudoku[i][j] + arrayControlNum] = true;
-		return true;
+		else {
+			existSquare[sudoku[i][j] + arrayControlNum] = true;
+			return true;
+		}
 	}
-	
+
 	static int checkSudoku(int[][] sudoku) {
 		boolean check = false;
 		boolean[] existSquare = new boolean[30];
 		for (int i = 0; i < 9; i++) {
 			boolean[] exist = new boolean[20];
-			if(i == 3 || i == 6) {
+			if (i == 3 || i == 6) {
 				existSquare = new boolean[30];
 			}
-			for(int j = 0; j < 3; j++) {
+			
+			for (int j = 0; j < 3; j++) {
 				check = checkAll(sudoku, i, j, exist, existSquare, 0);
-				if(check == false) return 0;
-				
+				if (check == false)
+					return 0;
 			}
-			for(int j = 3; j < 6; j++) {
+			for (int j = 3; j < 6; j++) {
 				check = checkAll(sudoku, i, j, exist, existSquare, 10);
-				if(check == false) return 0;
-
+				if (check == false)
+					return 0;
 			}
-			for(int j = 6; j < 9; j++) {
+			for (int j = 6; j < 9; j++) {
 				check = checkAll(sudoku, i, j, exist, existSquare, 20);
-				if(check == false) return 0;
+				if (check == false)
+					return 0;
 			}
+			
 		}
 		return 1;
 	}
