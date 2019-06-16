@@ -13,7 +13,7 @@ public class Solution_1859_백만_장자_프로젝트 {
 			costArray[i] = scan.nextInt(); 
 		}
 		for(int i = 0; i < day; i++) {
-			if(i+1 == day || costArray[i] > costArray[i+1] && buyingNum != 0 ) {
+			if(i+1 == day || (costArray[i] > costArray[i+1] && buyingNum != 0) ) {
 				benefit += buyingNum*costArray[i] - pay;
 				pay = 0;
 				buyingNum = 0;
