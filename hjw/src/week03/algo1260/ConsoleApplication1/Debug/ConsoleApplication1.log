@@ -1,0 +1,7 @@
+﻿  algo1260.cpp
+c:\users\admin\documents\visual studio 2015\algorithm_study\hjw\src\week03\algo1260\consoleapplication1\algo1260.cpp(21): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+c:\users\admin\documents\visual studio 2015\algorithm_study\hjw\src\week03\algo1260\consoleapplication1\algo1260.cpp(36): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+c:\users\admin\documents\visual studio 2015\algorithm_study\hjw\src\week03\algo1260\consoleapplication1\algo1260.cpp(75): warning C4154: 배열 식을 삭제했습니다. 포인터로 변환이 제공됩니다.
+c:\users\admin\documents\visual studio 2015\algorithm_study\hjw\src\week03\algo1260\consoleapplication1\algo1260.cpp(76): warning C4154: 배열 식을 삭제했습니다. 포인터로 변환이 제공됩니다.
+  ConsoleApplication1.vcxproj -> C:\Users\admin\Documents\Visual Studio 2015\algorithm_study\hjw\src\week03\algo1260\Debug\ConsoleApplication1.exe
+  ConsoleApplication1.vcxproj -> C:\Users\admin\Documents\Visual Studio 2015\algorithm_study\hjw\src\week03\algo1260\Debug\ConsoleApplication1.pdb (Full PDB)
