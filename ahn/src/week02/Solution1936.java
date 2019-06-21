@@ -28,7 +28,7 @@ public class Solution1936 {
         int userB = sc.nextInt();
 
         if (userA+1 == userB) { System.out.println("B"); }
-        else if(userB+1 == userA) { System.out.println("A"); }
+        else if(userB+1 == userA) { System.out.println("A"); }       //'보' 경우 처리 안했음
         else { /*Error*/ }
     }
 }
