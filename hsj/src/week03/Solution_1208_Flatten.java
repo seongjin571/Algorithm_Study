@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Solution_1208_Flatten {
 	static Scanner scan = new Scanner(System.in);
-
+	
 	static int doDump(int[] array) {
 		array[0]++;
 		array[array.length-1]--;
