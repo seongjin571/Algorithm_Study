@@ -11,7 +11,7 @@ public class BFS_Practice {
 	static int[] dy = { 0, 1, 0, -1 };
 	static int count = 0;
 
-	static void BFS(int[][] tenByTenMap) {
+	static void BFS() {
 		while (!queue.isEmpty()) {
 			int x = queue.poll();
 			int y = queue.poll();
@@ -39,7 +39,7 @@ public class BFS_Practice {
 		visit[0][0] = true;
 		queue.add(0);
 		queue.add(0);
-		BFS(tenByTenMap);
+		BFS();
 		
 	}
 }
