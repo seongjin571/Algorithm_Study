@@ -19,7 +19,7 @@ public class Main_2667_단지번호붙이기_DFS {
 		for(int k = 0; k < 4; k++) {
 			int newI = i + di[k];
 			int newJ = j + dj[k];
-			if((map[newI][newJ] == 1 && visit[newI][newJ] == false) && (-1<newI && newI<squareSize) && (-1<newJ && newJ<squareSize)){
+			if((-1<newI && newI<squareSize) && (-1<newJ && newJ<squareSize) && (map[newI][newJ] == 1 && visit[newI][newJ] == false)){
 				visit[newI][newJ] = true;
 				count++;
 				dfs(newI, newJ);
