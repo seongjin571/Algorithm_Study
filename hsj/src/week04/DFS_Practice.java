@@ -6,6 +6,7 @@ public class DFS_Practice {
 	static int[] dx = {-1, 0, 1, 0};
 	static int[] dy = {0, 1, 0, -1};
 	static int count = 0;
+	
 	static void DFS(int x, int y) {
 		for(int i = 0; i < 4; i++) {
 			int newX = x + dx[i];
