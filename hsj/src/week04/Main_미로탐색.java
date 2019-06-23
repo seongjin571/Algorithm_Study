@@ -1,4 +1,4 @@
-package week04;
+﻿package week04;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -52,7 +52,7 @@ public class Main_미로탐색 {
 		}
 		return 0;
 	}
-
+ 
 	public static void main(String[] args) {
 		for (int i = 0; i < sizeX; i++) {
 			String rowString = scan.next();
