@@ -65,6 +65,12 @@ class Graph {
             }
         }
     }
+    //int dx = {0,-1,0,1}   ---- 단지문제 -> 첫방문일때 bfs/dfs /// nx,ny 사용해서 예측 ,, 방문 처리 생각하기
+    //int dy = {-1,0,1,0}
+    /* for (i =0 -> i = 4){
+      int nx = x + dx[i];
+      int ny = y + dy[i];
+     */
 
     //BFS
     public void BFS(int start){

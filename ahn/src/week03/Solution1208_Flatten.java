@@ -47,6 +47,7 @@ package week03;
 
         #부호와 함께 테스트 케이스의 번호를 출력하고, 공백 문자 후 테스트 케이스의 최고점과 최저점의 높이 차를 출력한다.*/
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Solution1208_Flatten {
@@ -63,30 +64,30 @@ public class Solution1208_Flatten {
             for (int j = 0; j < 100; j++) {
                 arr[j] = sc.nextInt();
             }
-            for(int j=0; j<dump; j++){
+            for(int j=0; j<=dump; j++){
                 int max = 0;
                 int min = 101;
 
                 for(int k=0; k<100; k++) {
-                    if (arr[k] > max) {
-                        max = arr[k];
+                    if (arr[k] >= max) {
+                        max = arr[k];         //max = Math.max(max,arr[]);
                         max_idx = k;
                     }
-                    else if (arr[k] <= min) {
-                        min = arr[k];
+                    if (arr[k] <= min) {
+                        min = arr[k];         //min = Math.min(min,arr[]);
                         min_idx = k;
                     }
-                    else if(max == min) {
-                    }
                 }
-                result = max-min;
-
 
                 arr[max_idx] -= 1;
                 arr[min_idx] += 1;
 
+                result = max-min;
+
             }
             System.out.println("#" + (i+1) + " " + (result));
+
+
         }
     }
 }
