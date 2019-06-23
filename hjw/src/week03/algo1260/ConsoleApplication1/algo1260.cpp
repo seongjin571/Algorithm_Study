@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <queue>
 #include <stdio.h>
+#include <string.h>
 using namespace std;
 
 void bfs(vector<int>v[], bool check[], int start_v)
