@@ -8,8 +8,8 @@ public class Solution_1211_Ladder2 {
 	static int[] dx = { 0, 0, 1 };
 	static int[] dy = { 1, -1, 0 };
 	static boolean[][] visit;
-	static int maxCountY;
-	static int beforeCountY;
+	static int minCountY;
+	static int beforeCount;
 	
 	static void doLadder(int startY) {
 		int count = 1;
@@ -28,17 +28,17 @@ public class Solution_1211_Ladder2 {
 				}
 			}
 		}
-		if(count <= beforeCountY) {
-			beforeCountY = count;
-			maxCountY = startY;
+		if(count <= beforeCount) {
+			beforeCount = count;
+			minCountY = startY;
 		}
 	}
 
 	public static void main(String[] args) {
 		int result = 0;
 		for (int i = 1; i <= 10; i++) {
-			maxCountY = 0;
-			beforeCountY = 10000;
+			minCountY = 0;
+			beforeCount = 10000;
 			int testCount = scan.nextInt();
 			for (int j = 0; j < 100; j++) {
 				for (int k = 0; k < 100; k++) {
@@ -52,7 +52,7 @@ public class Solution_1211_Ladder2 {
 					doLadder(z);
 				}
 			}
-			System.out.println("#" + i + " " + maxCountY);
+			System.out.println("#" + i + " " + minCountY);
 		}
 	}
 }
