@@ -1,39 +1,50 @@
 #include <iostream>
 #include <algorithm>
 #include <string>
+#include <string.h>
 #include <fstream>
+#include <vector>
 using namespace std;
-/*
+
 int main()
 {
-	int testcase_number;
-	cin >> testcase_number;
+	int testcase;
+	cin >> testcase;
+	
+	int arr[10];
+	string comparestr[10] = { "ZRO ","ONE ","TWO ","THR ","FOR ","FIV ","SIX ","SVN ","EGT ","NIN " };
 
-	for (int i = 1; i <= testcase_number; i++)
+	for (int i = 0; i < testcase; i++)
 	{
-		int testcase_length;
+		string fir_num;
+		int number;
 		string str;
-		cin >> testcase_length;
-		testcase_length = testcase_length * 4;
-		char *ch = new char[testcase_length];
+		string sub;
+		cin >> fir_num;
+		cin >> number;
+		getchar();//빈칸 입력 안받기
+		memset(arr, 0, sizeof(arr));//개수 초기화
 		getline(cin, str);
-		strcpy(ch, str.c_str());
 
-		for (int j = 0; j < testcase_length; j = j+4)
+		for (int j = 0; j < number*4; j = j+4)//4개가 한묶음이므로 4칸씩 읽고 4칸씩 읽었기때문에 전체수 x 4
 		{
-			string str = ch[j];
+			sub = str.substr(j, 4);//네칸씩 잘라서 단어 한개씩 확보
+			for (int j = 0; j < 10; j++)//비교
+			{
+				int c = sub.compare(comparestr[j]);//-1, 0 ,1 ,,,,0이 같음 -1은 앞순서 1은 뒷순거
+				if (c == 0)
+				{
+					arr[j] += 1;//같을시 개수 ++
+				}
+			}
+		}
+		cout << fir_num << endl;
+		for (int i = 0; i < 10; i++)
+		{
+			for (int j = 0; j < arr[i]; j++)
+			{
+				cout << comparestr[i];
+			}
 		}
 	}
-}
-*/
-int main()
-{
-	ifstream inf("C:\\Users\\admin\\Downloads\\GNS_test_input.txt");
-	string str;
-	while (!inf.eof())
-	{
-		getline(inf, str);
-		cout << str;
-	}
-	
 }
