@@ -1,0 +1,4 @@
+﻿  sw_1211.cpp
+c:\users\admin\documents\visual studio 2015\algorithm_study\hjw\src\week04\sw_1211\sw_1211\sw_1211.cpp(26): warning C4293: '<<': 시프트 횟수가 음수이거나 너무 큽니다. 정의되지 않은 동작입니다.
+  sw_1211.vcxproj -> C:\Users\admin\Documents\Visual Studio 2015\algorithm_study\hjw\src\week04\sw_1211\Debug\sw_1211.exe
+  sw_1211.vcxproj -> C:\Users\admin\Documents\Visual Studio 2015\algorithm_study\hjw\src\week04\sw_1211\Debug\sw_1211.pdb (Full PDB)
