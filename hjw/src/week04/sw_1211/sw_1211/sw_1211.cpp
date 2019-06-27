@@ -33,12 +33,14 @@ void dfs(int x, int y)
 int main()
 {
 	int n;
-	int countarr[100] = {0};
+	int countarr[100];
 	int mx=0;
 	int mxdx=0;
 
+	for (int x = 0; x < 100; x++)
+		countarr[x] = 1000;
 
-	for (int i = 1; 1 < 11; i++)
+	for (int i = 1; i < 11; i++)
 	{
 		cin >> n;
 
@@ -78,7 +80,7 @@ int main()
 			}
 			else
 			{
-				if (mx <= countarr[a])
+				if (mx >= countarr[a])
 				{
 					mxdx = a;
 					mx = countarr[a];
@@ -87,7 +89,7 @@ int main()
 		}
 		cout << "#" << i << " " << mxdx << endl;
 		for (int x = 0; x < 100; x++)
-			countarr[x] = 0;
+			countarr[x] = 1000;
 
 		mx = 0;
 		mxdx = 0;
