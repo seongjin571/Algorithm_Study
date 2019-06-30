@@ -3,7 +3,7 @@ package d2;
 import java.util.LinkedList;
 import java.util.Queue;
 
-class Solution {
+class Programmers {
 	public int solution(String skill, String[] skill_trees) {
 		int answer = 0;
 		Queue<Object> queue = new LinkedList<>();
@@ -43,7 +43,7 @@ public class Solution_프로그래머스 {
 	public static void main(String[] args) {
 		String skill = "CBD";
 		String[] skill_trees = { "BACDE", "CBADF", "AECB", "BDA" };
-		Solution so = new Solution();
+		Programmers so = new Programmers();
 		
 	}
 

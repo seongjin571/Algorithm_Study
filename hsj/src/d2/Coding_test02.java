@@ -1,6 +1,6 @@
 package d2;
 
-class Solution {
+class Solution_Coding_Test02 {
     int solution(int[] A) {
         int n = A.length;
         int result = 0;

@@ -1,3 +1,4 @@
+package d2;
 //you can also use imports, for example:
 //import java.util.*;
 import java.util.Arrays;
@@ -6,7 +7,7 @@ import java.util.LinkedList;
 //you can write to stdout for debugging purposes, e.g.
 //System.out.println("this is a debug message");
 
-class Solution {
+class Solution_Coding_Test03 {
 	public int solution(int[] A) {
 		Queue<Integer> queue = new LinkedList<>();
 		int arrayLength = A.length;

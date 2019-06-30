@@ -1,3 +1,4 @@
+package d2;
 
 // you can also use imports, for example:
 // import java.util.*;
@@ -6,7 +7,7 @@ import java.util.List;
 // you can write to stdout for debugging purposes, e.g.
 // System.out.println("this is a debug message");
 
-class Solution {
+class Solution_Coding_Test01{
 	public int solution(int[] A) {
 	    
 		List<Integer> borderList = new ArrayList<>();

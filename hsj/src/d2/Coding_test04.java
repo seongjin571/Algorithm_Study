@@ -1,10 +1,11 @@
+package d2;
 // you can also use imports, for example:
 // import java.util.*;
 
 // you can write to stdout for debugging purposes, e.g.
 // System.out.println("this is a debug message");
 
-class Solution {
+class Solution_Coding_Test04 {
     static int arrayLength;
 	public boolean checkTemp(int[] T, int index, int winterMaxTemp) {
 		for (int i = index + 1; i < arrayLength; i++) {
