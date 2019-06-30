@@ -14,6 +14,7 @@ public class Solution_1225_암호생성기 {
 			for(int j = 0; j < 8; j++) {
 				numList.add(scan.nextInt());
 			}
+			
 			int flag = 0;
 			int minusCount = 0;
 			while(flag == 0) {
@@ -36,4 +37,5 @@ public class Solution_1225_암호생성기 {
 			System.out.println("");
 		}
 	}
+	
 }
