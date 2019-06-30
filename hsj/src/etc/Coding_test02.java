@@ -1,4 +1,4 @@
-package d2;
+package etc;
 
 class Solution_Coding_Test02 {
     int solution(int[] A) {

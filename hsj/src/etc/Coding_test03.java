@@ -1,4 +1,4 @@
-package d2;
+package etc;
 //you can also use imports, for example:
 //import java.util.*;
 import java.util.Arrays;
