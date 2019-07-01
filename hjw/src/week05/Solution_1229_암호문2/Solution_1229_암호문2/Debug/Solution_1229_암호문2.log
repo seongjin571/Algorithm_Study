@@ -1,0 +1,4 @@
+﻿  main.cpp
+c:\users\admin\documents\visual studio 2015\algorithm_study\hjw\src\week05\solution_1229_암호문2\solution_1229_암호문2\main.cpp(36): warning C4101: 'n' :참조되지 않은 지역 변수입니다.
+  Solution_1229_암호문2.vcxproj -> C:\Users\admin\Documents\Visual Studio 2015\algorithm_study\hjw\src\week05\Solution_1229_암호문2\Debug\Solution_1229_암호문2.exe
+  Solution_1229_암호문2.vcxproj -> C:\Users\admin\Documents\Visual Studio 2015\algorithm_study\hjw\src\week05\Solution_1229_암호문2\Debug\Solution_1229_암호문2.pdb (Full PDB)
