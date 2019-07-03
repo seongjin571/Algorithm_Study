@@ -1,30 +1,33 @@
 #include <iostream>
 #include <string.h>
-
+#include <queue>
 using namespace std;
 int dx[4] = { 0,1,0,-1 };
-int dy[4] = { 1,0,-1,0 };
+int dy[4] = { 1,0,-1,0 };//¿ì -> ¾Æ·¡ -> ÁÂ -> À§
 int result;
-void dfs(int x, int y, int **map, int **check, int n, int m)
+void bfs(int **map, int **check,int n,int m)
 {
-	if (x == 0 && y == 0)
-		check[x][y] = 1;
+	queue<int>que;
+	que.push(0);
+	que.push(0);
+	check[0][0] = 1;
 
-	if ((x == n-1) && (y == m-1))
+	while (!que.empty())
 	{
-		result = check[x][y];
-		for (int i = 0; i < n; i++)
-			memset(check[i],1, sizeof(int)*m);
-	}
-
-	for (int i = 0; i < 4; i++)
-	{
-		int newx = x + dx[i];
-		int newy = y + dy[i];
-		if ((-1 < newx && newx < n) && (-1 < newy && newy < m) && (check[newx][newy] == 0) && (map[newx][newy] == 1))
+		int xx = que.front();
+		que.pop();
+		int yy = que.front();
+		que.pop();
+		for (int i = 0; i < 4; i++)
 		{
-			check[newx][newy] = check[x][y] + 1;
-			dfs(newx, newy, map, check, n, m);
+			int newx = xx + dx[i];
+			int newy = yy + dy[i];
+			if ((-1 < newx && newx < n) && (-1 < newy && newy < m) && (check[newx][newy] == 0) && (map[newx][newy] == 1))
+			{
+				que.push(newx);
+				que.push(newy);
+				check[newx][newy] = check[xx][yy] + 1;
+			}
 		}
 	}
 }
@@ -59,6 +62,6 @@ int main()
 		}
 	}
 
-	dfs(0, 0, map, check,n,m);
-	cout << result << endl;
+	bfs(map, check, n, m);
+	cout << check[n-1][m-1] << endl;
 }
