@@ -17,11 +17,9 @@ public class Solution_1257_K번째_문자열 {
 			int index = scan.nextInt();
 			String str = scan.next();
 			int strLength = str.length();
-			int count = 0;
-			while(count <= strLength) {
-				count++;
-				for(int k = 0; k < strLength - count + 1; k++) {
-					String subStr = str.substring(k, k+count);
+			for(int j = 1; j <= strLength; j++) {
+				for(int k = 0; k < strLength - j + 1; k++) {
+					String subStr = str.substring(k, k+j);
 					strSet.add(subStr);
 				}
 			}
