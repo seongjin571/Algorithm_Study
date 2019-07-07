@@ -14,7 +14,7 @@ public class Solution_1861_정사각형_방 {
 	static int count = 0;
 
 	static void doBFS() {
-		count = 0;
+		count = 1;
 		while (!queue.isEmpty()) {
 			int x = queue.poll();
 			int y = queue.poll();
@@ -22,8 +22,10 @@ public class Solution_1861_정사각형_방 {
 				int value = map[x][y];
 				int newX = x + dx[i];
 				int newY = y + dy[i];
-				if ((0 < newX && newX < squareSize) && (0 < newY && newY < squareSize)
+				if ((-1 < newX && newX < squareSize) && (-1 < newY && newY < squareSize)
 						&& map[newX][newY] == value + 1) {
+					queue.add(newX);
+					queue.add(newY);
 					count++;
 				}
 			}
@@ -35,11 +37,11 @@ public class Solution_1861_정사각형_방 {
 		int testCount = scan.nextInt();
 		for (int i = 1; i <= testCount; i++) {
 			squareSize = scan.nextInt();
-			countArray = new int[squareSize * squareSize];
+			countArray = new int[squareSize * squareSize + 1];
 			map = new int[squareSize][squareSize];
 			for (int j = 0; j < squareSize; j++) {
 				for (int k = 0; k < squareSize; k++) {
-					map[0][0] = scan.nextInt();
+					map[j][k] = scan.nextInt();
 				}
 			}
 			for (int j = 0; j < squareSize; j++) {
@@ -52,7 +54,7 @@ public class Solution_1861_정사각형_방 {
 			}
 			int resultNum = 0;
 			int maxCount = 0;
-			for (int j = squareSize * squareSize - 1; j >= 0; j--) {
+			for (int j = squareSize * squareSize; j > 0; j--) {
 				if (maxCount <= countArray[j]) {
 					resultNum = j;
 					maxCount = countArray[j];
