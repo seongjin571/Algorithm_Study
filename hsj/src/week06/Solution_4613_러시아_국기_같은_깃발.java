@@ -6,12 +6,13 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Solution_4613_러시아_국기_같은_깃발 {
-	static List<int[]> list = new ArrayList<>();
-	static int[] combiArr = null;
+	static List<int[]> colorDistChart = new ArrayList<>();
 	static List<Integer> colorChangeList = new ArrayList<>();
-	static int result = 0;
+	static int[] combiArr = null;
+	static int changeCount = 0;
 	static int col = 0;
 	static int row = 0;
+	
 	static void reCombination(int[] combiArr, int r, int index, int target) {
 		boolean flag = false;
 		if (r == 0) {
@@ -23,10 +24,10 @@ public class Solution_4613_러시아_국기_같은_깃발 {
 			}
 			if(flag) {
 				for(int i = 0; i < row-2; i++) {
-					result += col - list.get(i)[combiArr[i]];
+					changeCount += col - colorDistChart.get(i)[combiArr[i]];
 				}
-				colorChangeList.add(result);
-				result = 0;
+				colorChangeList.add(changeCount);
+				changeCount = 0;
 				return;
 			}
 			else return;
@@ -36,8 +37,8 @@ public class Solution_4613_러시아_국기_같은_깃발 {
 			return;
 
 		combiArr[index] = target;
-		reCombination(combiArr, r - 1, index + 1, target);// 뽑는경우
-		reCombination(combiArr, r, index, target + 1);// 안뽑는경우
+		reCombination(combiArr, r - 1, index + 1, target);
+		reCombination(combiArr, r, index, target + 1);
 
 	}
 
@@ -69,18 +70,19 @@ public class Solution_4613_러시아_국기_같은_깃발 {
 						}
 					}
 				}
-				list.add(colorCount);
+				colorDistChart.add(colorCount);
 				colorCount = new int[3];
 			}
-			list.remove(0);
-			list.remove(list.size() - 1);
-			int listSize = list.size();
+			
+			colorDistChart.remove(0); //첫줄 삭제
+			colorDistChart.remove(colorDistChart.size() - 1); //마지막줄 삭제
+			int listSize = colorDistChart.size();
 			combiArr = new int[listSize];
 			reCombination(combiArr, listSize, 0, 0);
 			Collections.sort(colorChangeList);
 			int result = colorChangeList.get(0) + count;
 			System.out.println("#" + i + " " + result);
-			list.clear();
+			colorDistChart.clear();
 			colorChangeList.clear();
 			
 		}
