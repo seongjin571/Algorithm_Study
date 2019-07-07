@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Solution_4613_러시아_국기_같은_깃발 {
-	static List<int[]> colorDistChart = new ArrayList<>();
+	static List<int[]> colorDistList = new ArrayList<>();
 	static List<Integer> colorChangeList = new ArrayList<>();
 	static int[] combiArr = null;
 	static int changeCount = 0;
@@ -24,7 +24,7 @@ public class Solution_4613_러시아_국기_같은_깃발 {
 			}
 			if(flag) {
 				for(int i = 0; i < row-2; i++) {
-					changeCount += col - colorDistChart.get(i)[combiArr[i]];
+					changeCount += col - colorDistList.get(i)[combiArr[i]];
 				}
 				colorChangeList.add(changeCount);
 				changeCount = 0;
@@ -70,19 +70,19 @@ public class Solution_4613_러시아_국기_같은_깃발 {
 						}
 					}
 				}
-				colorDistChart.add(colorCount);
+				colorDistList.add(colorCount);
 				colorCount = new int[3];
 			}
 			
-			colorDistChart.remove(0); //첫줄 삭제
-			colorDistChart.remove(colorDistChart.size() - 1); //마지막줄 삭제
-			int listSize = colorDistChart.size();
+			colorDistList.remove(0); //첫줄 삭제
+			colorDistList.remove(colorDistList.size() - 1); //마지막줄 삭제
+			int listSize = colorDistList.size();
 			combiArr = new int[listSize];
 			reCombination(combiArr, listSize, 0, 0);
 			Collections.sort(colorChangeList);
 			int result = colorChangeList.get(0) + count;
 			System.out.println("#" + i + " " + result);
-			colorDistChart.clear();
+			colorDistList.clear();
 			colorChangeList.clear();
 			
 		}
