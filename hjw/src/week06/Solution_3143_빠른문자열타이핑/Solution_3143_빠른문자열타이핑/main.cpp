@@ -28,11 +28,18 @@ int main()
 			string sample;
 			sample = A.substr(j, B_length);
 			if (B.compare(sample) == 0)
+			{
 				number++;
-			j++;
+				j = j + B_length;
+			}
+			else
+			{
+				j++;
+			}
 		}
 		int result = 0;
 		result = A_length - (number*B_length) + number;
+		
 		cout << "#" << i + 1 << " " << result << endl;
 	}
 }

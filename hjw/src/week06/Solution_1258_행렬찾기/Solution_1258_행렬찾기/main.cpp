@@ -58,21 +58,28 @@ n은 100 이하이다.
 예를 들어 12x4, 8x6 두 개의 행렬은 같은 크기이고 행은 각각 12, 8 이므로 8 6 12 4 순으로 출력한다.*/
 
 #include <iostream>
+#include <string.h>
 #include <vector>
 #include <algorithm>
 #include <queue>
 using namespace std;
-struct Node {
+struct rectangle {
 	int subsize;
-	int hang;
-	int yeol;
-	Node *next;
+	int row;
+	int colum;
 };
 int dx[4] = { 1,0,-1,0 };
 int dy[4] = { 0,1,0,-1 };
-vector<int>v[1001];
+vector <rectangle> v;
+bool compareweight(const rectangle &a, const rectangle &b) {
+	if (a.subsize == b.subsize)
+		return a.row < b.row;
+	else
+		return a.subsize < b.subsize;
+}
 void bfs(int **map, int **check, int x, int y, int n,int count)
 {
+	rectangle rec;
 	int start_idx = x;
 	int start_idy = y;
 	int last_idx;
@@ -105,9 +112,13 @@ void bfs(int **map, int **check, int x, int y, int n,int count)
 	int row = last_idx - start_idx + 1;
 	int column = last_idy - start_idy + 1;
 	int subsize = row*column;
-	v[count].push_back(subsize);
-	v[count].push_back(row);
-	v[count].push_back(column);
+	
+	rec.colum = column;
+	rec.row = row;
+	rec.subsize = subsize;
+
+	v.push_back(rec);
+	
 }
 int main()
 {
@@ -148,26 +159,19 @@ int main()
 			}
 		}
 		cout << "#" << i << " ";
-		cout << count << endl;
+		cout << count << " ";
 
-		int *arr;
-		arr = new int[count];
-		for (int j = 1; j <= count; j++)
-		{
-			arr[j] = v[j].at(0);//v[j].at(0)에는 크기가 들어가있다 subsize
-		}//int형 배열에 하나씩 입력
-		sort(arr, arr + count);//sort한다
+		
+		sort(v.begin(), v.end(), compareweight);
 
-		for (int k = 1; k <= count; k++)
+		for (int j=0;j<count;j++)
 		{
-			for (int j = 1; j <= count; j++)
-			{
-				if (arr[k] == v[j].at(0))
-				{
-					cout << v[j].at(1) << " " << v[j].at(2) << " ";
-				}
-			}
+			cout << v.at(j).row <<  " " << v.at(j).colum << " ";
 		}
 		cout << endl;
+
+		vector<rectangle>::iterator it;
+		it = v.begin();
+		v.erase(it, it + count);
 	}
 }
