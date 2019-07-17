@@ -31,7 +31,6 @@ public class Solution_1949_등산로_조성 {
 		for (int i = 0; i < 4; i++) {
 			int newX = x + dx[i];
 			int newY = y + dy[i];
-
 			if ((-1 < newX && newX < squareSize) && (-1 < newY && newY < squareSize) && (newX != beforeX || newY != beforeY)) {
 				if (map[newX][newY] < value) {
 					doDFS(x, y, newX, newY, map[newX][newY], flag, count + 1);
