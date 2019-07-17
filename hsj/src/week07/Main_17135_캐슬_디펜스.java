@@ -18,7 +18,6 @@ public class Main_17135_캐슬_디펜스 {
 	static boolean[][] die = null;
 	static int[][] map = null;
 	static int killCnt = 0;
-	static int stageCnt = 0;
 	static boolean flag = false;
 	static boolean[][] visit = null;
 	static Queue<Integer> queue = new LinkedList<>();
@@ -30,7 +29,7 @@ public class Main_17135_캐슬_디펜스 {
 		killCnt = 0;
 		dieQueue.clear();
 		for (int i = row; i > 0; i--) {
-			while(!dieQueue.isEmpty()) {
+			while (!dieQueue.isEmpty()) {
 				int x = dieQueue.poll();
 				int y = dieQueue.poll();
 				die[x][y] = true;
@@ -41,14 +40,22 @@ public class Main_17135_캐슬_디펜스 {
 				queue.add(archerArr[j]);
 				while (!queue.isEmpty()) {
 					flag = false;
-					int attackCnt = 0;
+					int attackLen = 0;
 					while (!flag) {
 						int x = queue.poll();
 						int y = queue.poll();
-						if (attackCnt == 0) {
-							int newX = x - 1;
-							int newY = y;
-							if ((-1 < newX && newX < i) && (-1 < newY && newY < cattleWid) && map[newX][newY] == 1 && !die[newX][newY]) {
+						int newX;
+						int newY;
+						for (int k = 0; k < 3; k++) {
+							if (attackLen == 0) {
+								newX = x - 1;
+								newY = y;
+							} else {
+								newX = x + dx[k];
+								newY = y + dy[k];
+							}
+							if ((-1 < newX && newX < i) && (-1 < newY && newY < cattleWid)
+									&& (!die[newX][newY] && map[newX][newY] == 1)) {
 								if (!visit[newX][newY]) {
 									killCnt++;
 									visit[newX][newY] = true;
@@ -56,28 +63,14 @@ public class Main_17135_캐슬_디펜스 {
 									dieQueue.add(newY);
 								}
 								flag = true;
-							}
-						} else {
-							for (int k = 0; k < 3; k++) {
-								int newX = x + dx[k];
-								int newY = y + dy[k];
-								if ((-1 < newX && newX < i) && (-1 < newY && newY < cattleWid) && (!die[newX][newY] && map[newX][newY] == 1)) {
-									if (!visit[newX][newY]) {
-										killCnt++;
-										visit[newX][newY] = true;
-										dieQueue.add(newX);
-										dieQueue.add(newY);
-										
-									}
-									flag = true;
-									break;
-								}
+								break;
 							}
 						}
+
 						if (!flag) {
-							attackCnt++;
-							if (attackCnt < attackRange) {
-								queue.add(i - attackCnt);
+							attackLen++;
+							if (attackLen < attackRange) {
+								queue.add(i - attackLen);
 								queue.add(archerArr[j]);
 							} else {
 								flag = true;
