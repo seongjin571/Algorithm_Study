@@ -105,12 +105,13 @@ void dfs(int x, int y, int n,int k,int use_k,int cnt)
 			}
 			else if ((map[x][y] > map[newx][newy] - k) && use_k == 0)
 			{
-				map[newx][newy] = map[newx][newy] - 1;
+				int temp = map[newx][newy];
+				map[newx][newy] = map[x][y] - 1;
 				check[newx][newy] = 1;
 				use_k++;
 				dfs(newx, newy, n, k, use_k,cnt+1);
 				use_k = 0;
-				map[newx][newy] = map[newx][newy] + 1;
+				map[newx][newy] = temp;
 				check[newx][newy] = 0;
 			}
 		}
@@ -153,10 +154,6 @@ int main()
 				}
 			}
 		}
-
-
-
-
 
 
 		printf("#%d %d\n", z, result);
