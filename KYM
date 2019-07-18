@@ -1,0 +1,125 @@
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class Main_17135_캐슬디펜스 {
+	static class rc{
+		public int x;
+		public int y;
+		public int cnt;
+		public rc(int x, int y, int cnt) {
+			super();
+			this.x = x;
+			this.y = y;
+			this.cnt = cnt;
+		}
+		@Override
+		public String toString() {
+			return "rc [x=" + x + ", y=" + y + ", cnt=" + cnt + "]";
+		}
+
+
+	}
+	public static int [][]map;
+	public static int [][]tmpMap;
+	static int []seq;
+	static Queue<rc> q;
+	static ArrayList<rc> li;
+	public static int []dx = {0,-1,0};
+	public static int []dy = {-1,0,1};
+	public static int n,m,k, ans;
+	public static void main(String[] args) throws Exception{
+		System.setIn(new FileInputStream("rs/17135.txt"));
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String data = br.readLine();
+		String []d = data.split(" ");
+		n = Integer.parseInt(d[0]);
+		m = Integer.parseInt(d[1]);
+		k = Integer.parseInt(d[2]);
+		ans = 0;
+		map = new int[n+1][m];
+
+		for(int i=0; i<n; i++){
+			data = br.readLine();
+			d = data.split(" ");
+			for(int j=0; j<m; j++){
+				map[i][j] = Integer.parseInt(d[j]);
+			}
+		}
+		seq = new int[3];
+		ans = Integer.MIN_VALUE;
+		dfs(0,0);
+
+		System.out.println(ans);
+	}
+	private static void dfs(int idx, int cnt) {
+		if(cnt == 3){
+			tmpMap = new int[n+1][m];
+			for(int i=0; i<n; i++){	//초기화
+				for(int j=0; j<m; j++){
+					tmpMap[i][j] = map[i][j];
+				}
+			}
+			int sum =0;
+			for(int i=0; i<n; i++){
+				li = new ArrayList<>();
+				for(int com=0; com<3; com++){
+					q = new LinkedList<>();
+					tmpMap[n][seq[com]] = 3;
+					q.offer(new rc(n, seq[com], 0));
+					bfs();
+				}
+				for(int z=0; z<li.size(); z++){
+					rc a =li.get(z);
+					sum += tmpMap[a.x][a.y];
+					tmpMap[a.x][a.y] = 0;
+				}
+				move();
+			}
+
+			ans = Math.max(ans, sum);
+			return;
+		}
+
+		for(int i=idx; i<m; i++){
+			seq[cnt] = i;
+			dfs(i+1,cnt+1);
+			seq[cnt] = 0;
+		}
+	}
+	private static void move() {
+		for(int i=0; i<m; i++){
+			for(int j=n-1; j>0; j--){
+				tmpMap[j][i] = tmpMap[j-1][i];
+				tmpMap[j-1][i] = 0;
+			}
+		}
+	}
+	private static void bfs() {
+		while(!q.isEmpty()){
+			rc a = q.poll();
+			if(a.cnt >= k)
+				return ;
+			for(int i=0; i<3; i++){
+				int nx = a.x + dx[i];
+				int ny = a.y + dy[i];
+
+				if(0 <= nx && nx <= n && 0 <= ny && ny < m){
+					if(tmpMap[nx][ny] != 1){
+						q.offer(new rc(nx,ny,a.cnt+1));
+					}
+					else if(tmpMap[nx][ny] == 1){
+						li.add(new rc(nx, ny, 0));
+						return ;
+					}
+				}
+
+			}
+
+		}
+	}
+}
