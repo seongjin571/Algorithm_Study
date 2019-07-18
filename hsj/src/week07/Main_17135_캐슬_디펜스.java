@@ -36,12 +36,12 @@ public class Main_17135_캐슬_디펜스 {
 				die[x][y] = true;
 			}
 			visit = new boolean[row][cattleWid];
-			for (int j = 0; j < 3; j++) { //궁수 한명씩 죽이기 
+			for (int j = 0; j < 3; j++) { //궁수 한명씩 시작
 				queue.add(i);
 				queue.add(archerArr[j]);
 				int attackLen = 0;
+				flag = false;
 				while (!queue.isEmpty()) { // 한 궁수가 한명 죽이거나, 거리내에 없으면 탈출
-					flag = false;
 					int x = queue.poll();
 					int y = queue.poll();
 					int newX;
@@ -54,7 +54,7 @@ public class Main_17135_캐슬_디펜스 {
 							newX = x + dx[k];
 							newY = y + dy[k];
 						}
-						if (-1 < newX && -1 < newY && newY < cattleWid && !die[newX][newY] && map[newX][newY] == 1) {
+						if (-1 < newX && -1 < newY && newY < cattleWid && map[newX][newY] == 1 && !die[newX][newY]) {
 							if (!visit[newX][newY]) {
 								killCnt++;
 								visit[newX][newY] = true;
@@ -78,12 +78,12 @@ public class Main_17135_캐슬_디펜스 {
 			}
 		}
 		list.add(killCnt);
-//		System.out.println(killCnt);
+		System.out.println(killCnt);
 	}
 
 	static void getArcherPosi(int idx, int cnt) {
 		if (cnt == 3) {
-//			System.out.print(Arrays.toString(archerArr));
+			System.out.print(Arrays.toString(archerArr));
 			getKillNum();
 			return;
 		} else {

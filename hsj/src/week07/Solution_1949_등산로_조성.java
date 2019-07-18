@@ -27,13 +27,15 @@ public class Solution_1949_등산로_조성 {
 	public static int maxCount = 0;
 	public static boolean depthFlag = false;
 
-	public static void doDFS(int beforeX, int beforeY, int x, int y, int value, boolean flag, int count) {
+	public static void doDFS(int x, int y,  int value, boolean flag, int count) {
 		for (int i = 0; i < 4; i++) {
 			int newX = x + dx[i];
 			int newY = y + dy[i];
-			if ((-1 < newX && newX < squareSize) && (-1 < newY && newY < squareSize) && (newX != beforeX || newY != beforeY)) {
+			if ((-1 < newX && newX < squareSize) && (-1 < newY && newY < squareSize) && !visit[newX][newY]) {
 				if (map[newX][newY] < value) {
-					doDFS(x, y, newX, newY, map[newX][newY], flag, count + 1);
+					visit[newX][newY] = true;
+					doDFS(newX, newY, map[newX][newY], flag, count + 1);
+					visit[newX][newY] = false;
 				} else {
 					if (flag) {
 						if (maxCount < count)
@@ -41,9 +43,10 @@ public class Solution_1949_등산로_조성 {
 					} else {
 						for (int j = 1; j <= depth; j++) {
 							if (map[newX][newY] - j < value) {
-								// flag = true;
+								visit[newX][newY] = true;
 								depthFlag = true;
-								doDFS(x, y, newX, newY, map[newX][newY] - j, true, count + 1);
+								doDFS(newX, newY, map[newX][newY] - j, true, count + 1);
+								visit[newX][newY] = false;
 								break;
 							}
 						}
@@ -91,7 +94,7 @@ public class Solution_1949_등산로_조성 {
 				int x = startPoint.x;
 				int y = startPoint.y;
 				maxCount = 0;
-				doDFS(-1, -1, x, y, maxNum, flag, 1);
+				doDFS(x, y, maxNum, flag, 1);
 				list.add(maxCount);
 			}
 			Collections.sort(list);
