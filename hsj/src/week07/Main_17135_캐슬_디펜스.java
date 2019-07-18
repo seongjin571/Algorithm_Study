@@ -22,8 +22,8 @@ public class Main_17135_캐슬_디펜스 {
 		Queue<Integer> dieQueue = new LinkedList<>();
 		boolean[][] die = new boolean[row][cattleWid];
 		int killCnt = 0;
-		for (int i = row; i > 0; i--) { // 각 스테이지 별로
-			while (!dieQueue.isEmpty()) {
+		for (int i = row; i > 0; i--) { // 각 스테이지 별로 게임 진행
+			while (!dieQueue.isEmpty()) {  //좀 전의 스테이지에서 죽은 적들 체크
 				int x = dieQueue.poll();
 				int y = dieQueue.poll();
 				die[x][y] = true;
@@ -37,24 +37,22 @@ public class Main_17135_캐슬_디펜스 {
 					int x = archerQueue.poll();
 					int y = archerQueue.poll();
 					int attackLen = archerQueue.poll();
-					int newX;
-					int newY;
 					for (int k = 0; k < 3; k++) {
-						newX = x + dx[k];
-						newY = y + dy[k];
+						int newX = x + dx[k];
+						int newY = y + dy[k];
 						if (newX != i && (-1 < newX && -1 < newY && newY < cattleWid)) {
-							if (map[newX][newY] == 1 && !die[newX][newY]) {
+							if (map[newX][newY] == 1 && !die[newX][newY]) { //적이 있는 위치이고 아직 안죽은 적인 경우
 								if (!visit[newX][newY]) { //죽었다고 체크되어있지 않고 이번 스테이지에서도 안죽은 적일 경우
 									killCnt++;
-									visit[newX][newY] = true;
+									visit[newX][newY] = true; //이번판에서 죽음 => 옆에 궁수가 동시에 죽여도 죽인수 늘어나지 않도록 
 									dieQueue.add(newX);
 									dieQueue.add(newY);
 								}
-								archerQueue.clear();
+								archerQueue.clear(); //적을 죽였을때 queue초기화 하고 while 탈출 후 다음 궁수 혹은 다음 스테이지 진행
 								break;
 							} 
 							
-							else if(attackLen + 1 < attackRange){
+							else if(attackLen + 1 < attackRange){ // 해당 좌표에 적이 없었을 때 아직 최대 공격범위보다 공격범위가 적을 시 해당 좌표를 큐에 넣어준다.=>공격 범위+1
 								archerQueue.add(newX);
 								archerQueue.add(newY);
 								archerQueue.add(attackLen + 1);
