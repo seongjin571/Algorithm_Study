@@ -1,7 +1,6 @@
 package week07;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -34,7 +33,6 @@ public class Main_17135_캐슬_디펜스 {
 				archerQueue.add(i);
 				archerQueue.add(archerArr[j]);
 				archerQueue.add(0);
-				boolean flag = false;
 				while (!archerQueue.isEmpty()) { // 한 궁수가 한명 죽이거나, 거리내에 없으면 탈출
 					int x = archerQueue.poll();
 					int y = archerQueue.poll();
@@ -45,9 +43,8 @@ public class Main_17135_캐슬_디펜스 {
 						newX = x + dx[k];
 						newY = y + dy[k];
 						if (newX != i && (-1 < newX && -1 < newY && newY < cattleWid)) {
-							
 							if (map[newX][newY] == 1 && !die[newX][newY]) {
-								if (!visit[newX][newY]) {
+								if (!visit[newX][newY]) { //죽었다고 체크되어있지 않고 이번 스테이지에서도 안죽은 적일 경우
 									killCnt++;
 									visit[newX][newY] = true;
 									dieQueue.add(newX);
@@ -62,20 +59,17 @@ public class Main_17135_캐슬_디펜스 {
 								archerQueue.add(newY);
 								archerQueue.add(attackLen + 1);
 							}
-							
 						}
 					}
 				}
 			}
 		}
 		list.add(killCnt);
-		System.out.println(killCnt);
 
 	}
 
 	static void getArcherPosi(int idx, int cnt) {
 		if (cnt == 3) {
-			System.out.print(Arrays.toString(archerArr));
 			getKillNum();
 			return;
 		} else {
