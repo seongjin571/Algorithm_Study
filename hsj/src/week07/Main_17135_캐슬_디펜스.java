@@ -9,41 +9,35 @@ import java.util.Queue;
 import java.util.Scanner;
 
 public class Main_17135_캐슬_디펜스 {
-	static int[] dx = { 0, -1, 0 };
-	static int[] dy = { -1, 0, 1 };
 	static int row = 0;
 	static int cattleWid = 0;
 	static int attackRange = 0;
 	static int[] archerArr = null;
-	static boolean[][] die = null;
 	static int[][] map = null;
-	static int killCnt = 0;
-	static boolean flag = false;
-	static boolean[][] visit = null;
-	static int enemyNum = 0;
-	static Queue<Integer> queue = new LinkedList<>();
 	static List<Integer> list = new ArrayList<>();
-	static Queue<Integer> dieQueue = new LinkedList<>();
 
 	static void getKillNum() {
-		die = new boolean[row][cattleWid];
-		killCnt = 0;
-		dieQueue.clear();
+		int[] dx = { 0, -1, 0 };
+		int[] dy = { -1, 0, 1 };
+		Queue<Integer> archerQueue = new LinkedList<>();
+		Queue<Integer> dieQueue = new LinkedList<>();
+		boolean[][] die = new boolean[row][cattleWid];
+		int killCnt = 0;
 		for (int i = row; i > 0; i--) { //각 스테이지 별로
 			while (!dieQueue.isEmpty()) {
 				int x = dieQueue.poll();
 				int y = dieQueue.poll();
 				die[x][y] = true;
 			}
-			visit = new boolean[row][cattleWid];
+			boolean[][] visit = new boolean[row][cattleWid];
 			for (int j = 0; j < 3; j++) { //궁수 한명씩 시작
-				queue.add(i);
-				queue.add(archerArr[j]);
+				archerQueue.add(i);
+				archerQueue.add(archerArr[j]);
 				int attackLen = 0;
-				flag = false;
-				while (!queue.isEmpty()) { // 한 궁수가 한명 죽이거나, 거리내에 없으면 탈출
-					int x = queue.poll();
-					int y = queue.poll();
+				boolean flag = false;
+				while (!archerQueue.isEmpty()) { // 한 궁수가 한명 죽이거나, 거리내에 없으면 탈출
+					int x = archerQueue.poll();
+					int y = archerQueue.poll();
 					int newX;
 					int newY;
 					for (int k = 0; k < 3; k++) {
@@ -69,8 +63,8 @@ public class Main_17135_캐슬_디펜스 {
 					if (!flag) {
 						attackLen++;
 						if (attackLen < attackRange) {
-							queue.add(i - attackLen);
-							queue.add(archerArr[j]);
+							archerQueue.add(i - attackLen);
+							archerQueue.add(archerArr[j]);
 						} 
 					}
 					
