@@ -23,56 +23,54 @@ public class Main_17135_캐슬_디펜스 {
 		Queue<Integer> dieQueue = new LinkedList<>();
 		boolean[][] die = new boolean[row][cattleWid];
 		int killCnt = 0;
-		for (int i = row; i > 0; i--) { //각 스테이지 별로
+		for (int i = row; i > 0; i--) { // 각 스테이지 별로
 			while (!dieQueue.isEmpty()) {
 				int x = dieQueue.poll();
 				int y = dieQueue.poll();
 				die[x][y] = true;
 			}
 			boolean[][] visit = new boolean[row][cattleWid];
-			for (int j = 0; j < 3; j++) { //궁수 한명씩 시작
+			for (int j = 0; j < 3; j++) { // 궁수 한명씩 시작
 				archerQueue.add(i);
 				archerQueue.add(archerArr[j]);
-				int attackLen = 0;
+				archerQueue.add(0);
 				boolean flag = false;
 				while (!archerQueue.isEmpty()) { // 한 궁수가 한명 죽이거나, 거리내에 없으면 탈출
 					int x = archerQueue.poll();
 					int y = archerQueue.poll();
+					int attackLen = archerQueue.poll();
 					int newX;
 					int newY;
 					for (int k = 0; k < 3; k++) {
-						if (attackLen == 0) {
-							newX = x - 1;
-							newY = y;
-						} else {
-							newX = x + dx[k];
-							newY = y + dy[k];
-						}
-						if (-1 < newX && -1 < newY && newY < cattleWid && map[newX][newY] == 1 && !die[newX][newY]) {
-							if (!visit[newX][newY]) {
-								killCnt++;
-								visit[newX][newY] = true;
-								dieQueue.add(newX);
-								dieQueue.add(newY);
+						newX = x + dx[k];
+						newY = y + dy[k];
+						if (newX != i && (-1 < newX && -1 < newY && newY < cattleWid)) {
+							
+							if (map[newX][newY] == 1 && !die[newX][newY]) {
+								if (!visit[newX][newY]) {
+									killCnt++;
+									visit[newX][newY] = true;
+									dieQueue.add(newX);
+									dieQueue.add(newY);
+								}
+								archerQueue.clear();
+								break;
+							} 
+							
+							else if(attackLen + 1 < attackRange){
+								archerQueue.add(newX);
+								archerQueue.add(newY);
+								archerQueue.add(attackLen + 1);
 							}
-							flag = true;
-							break;
+							
 						}
 					}
-
-					if (!flag) {
-						attackLen++;
-						if (attackLen < attackRange) {
-							archerQueue.add(i - attackLen);
-							archerQueue.add(archerArr[j]);
-						} 
-					}
-					
 				}
 			}
 		}
 		list.add(killCnt);
 		System.out.println(killCnt);
+
 	}
 
 	static void getArcherPosi(int idx, int cnt) {
