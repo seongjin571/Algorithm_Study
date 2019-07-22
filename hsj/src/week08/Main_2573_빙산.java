@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Queue;
 import java.util.Scanner;
 
-class Point {
+class Point2 {
 	int x, y;
 
-	Point(int x, int y) {
+	Point2(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
@@ -17,7 +17,7 @@ class Point {
 
 public class Main_2573_빙산 {
 	static Queue<Integer> queue = new LinkedList<>();
-	static List<Point> list = new ArrayList<>();
+	static List<Point2> list = new ArrayList<>();
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
@@ -33,7 +33,7 @@ public class Main_2573_빙산 {
 			for (int j = 0; j < ySize; j++) {
 				map[i][j] = scan.nextInt();
 				if (map[i][j] != 0) {
-					list.add(new Point(i, j));
+					list.add(new Point2(i, j));
 				}
 			}
 		}
@@ -42,7 +42,7 @@ public class Main_2573_빙산 {
 			year++;
 			int listSize = list.size();
 			for (int i = 0; i < listSize; i++) {
-				Point point = list.get(i);
+				Point2 point = list.get(i);
 				int x = point.x;
 				int y = point.y;
 				icePosi[x][y] = true;
@@ -66,7 +66,7 @@ public class Main_2573_빙산 {
 				flag = true;
 				break;
 			} else {
-				Point point = list.get(0);
+				Point2 point = list.get(0);
 				int x = point.x;
 				int y = point.y;
 				visit[x][y] = true;
