@@ -5,10 +5,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
-class Point implements Comparable<Point> {
+class Cell implements Comparable<Cell> {
 	int x, y, hour, value, state;
 
-	Point(int x, int y, int value) {
+	Cell(int x, int y, int value) {
 		this.x = x;
 		this.y = y;
 		this.hour = value;
@@ -17,8 +17,8 @@ class Point implements Comparable<Point> {
 	}
 
 	@Override
-	public int compareTo(Point point) {
-		if (this.value > point.value) {
+	public int compareTo(Cell cell) {
+		if (this.value > cell.value) {
 			return 1;
 		}
 		return 0;
@@ -26,7 +26,7 @@ class Point implements Comparable<Point> {
 }
 
 public class Solution_5653_줄기세포배양 {
-	static List<Point> list = new ArrayList<>();
+	static List<Cell> list = new ArrayList<>();
 	static int totalHour = 0;
 	static int[][] map = null;
 
@@ -37,23 +37,23 @@ public class Solution_5653_줄기세포배양 {
 			Collections.sort(list);
 			int listSize = list.size();
 			for(int k = 0; k < listSize; k++) {
-				Point point = list.get(k);
-				point.hour--;
-				if(point.state == 1 && point.hour == 0) {
-					point.state = 2;
-					point.hour = point.value;
+				Cell cell = list.get(k);
+				cell.hour--;
+				if(cell.state == 1 && cell.hour == 0) {
+					cell.state = 2;
+					cell.hour = cell.value;
 				}
 
-				else if(point.state == 2 && point.hour >= 0) {
+				else if(cell.state == 2 && cell.hour >= 0) {
 					for(int j = 0; j < 4; j++) {
-						int newX = point.x + dx[j];
-						int newY = point.y + dy[j];
+						int newX = cell.x + dx[j];
+						int newY = cell.y + dy[j];
 						if(map[newX][newY] == 0) {
-							map[newX][newY] = point.value;
-							list.add(new Point(newX, newY, point.value));
+							map[newX][newY] = cell.value;
+							list.add(new Cell(newX, newY, cell.value));
 						}
 					}
-					if(point.hour -1 < 0) {
+					if(cell.hour -1 < 0) {
 						list.remove(k);
 						k--;
 						listSize--;
@@ -80,7 +80,7 @@ public class Solution_5653_줄기세포배양 {
 				for (int k = yStart; k < yStart + y; k++) {
 					map[j][k] = scan.nextInt();
 					if (map[j][k] != 0)
-						list.add(new Point(j, k, map[j][k]));
+						list.add(new Cell(j, k, map[j][k]));
 				}
 			}
 
