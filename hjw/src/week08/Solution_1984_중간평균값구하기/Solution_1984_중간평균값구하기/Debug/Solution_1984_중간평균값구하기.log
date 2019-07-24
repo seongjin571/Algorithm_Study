@@ -1,0 +1,8 @@
+﻿  main.cpp
+c:\users\admin\documents\visual studio 2015\algorithm_study\hjw\src\week08\solution_1984_중간평균값구하기\solution_1984_중간평균값구하기\main.cpp(10): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1270): note: 'scanf' 선언을 참조하십시오.
+c:\users\admin\documents\visual studio 2015\algorithm_study\hjw\src\week08\solution_1984_중간평균값구하기\solution_1984_중간평균값구하기\main.cpp(18): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1270): note: 'scanf' 선언을 참조하십시오.
+c:\users\admin\documents\visual studio 2015\algorithm_study\hjw\src\week08\solution_1984_중간평균값구하기\solution_1984_중간평균값구하기\main.cpp(31): warning C4477: 'printf' : 서식 문자열 '%.d'에 'int' 형식의 인수가 필요하지만 variadic 인수 2의 형식이 'double'입니다.
+  Solution_1984_중간평균값구하기.vcxproj -> C:\Users\admin\Documents\Visual Studio 2015\algorithm_study\hjw\src\week08\Solution_1984_중간평균값구하기\Debug\Solution_1984_중간평균값구하기.exe
+  Solution_1984_중간평균값구하기.vcxproj -> C:\Users\admin\Documents\Visual Studio 2015\algorithm_study\hjw\src\week08\Solution_1984_중간평균값구하기\Debug\Solution_1984_중간평균값구하기.pdb (Full PDB)

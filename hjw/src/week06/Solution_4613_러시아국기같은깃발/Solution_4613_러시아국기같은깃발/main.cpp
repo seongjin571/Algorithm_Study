@@ -1,3 +1,4 @@
+/*
 #include <iostream>
 
 using namespace std;
@@ -110,5 +111,132 @@ int main()
 
 
 		cout << "#" << i << " " << result << endl;
+	}
+}
+*/
+//중복조합으로  풀어야 하는 문제
+#include <cstdio>
+#include <algorithm>
+#include <iostream>
+#include <vector>
+#include <queue>
+using namespace std;
+
+int hang, yeol;
+char map[51][51];
+int intmap[51][51];
+int arr[51];
+int index;
+vector <int> vc;//조합을 담는 벡터
+vector<int> result;
+queue<int> que;
+int cal()
+{
+	int res = 0;
+	int h_index = 1;
+	int cnt = 0;
+	while (!que.empty())
+	{
+		int x = que.front();
+		que.pop();
+		for (int i = 0; i < yeol; i++)
+		{
+			if (intmap[h_index][i] != x)
+				cnt++;
+		}
+		res = res + cnt;
+		cnt = 0;
+		h_index++;
+	}
+
+	return res;
+}
+void dfs(int cnt, int n, int r)//0-n 까지의 숫자를 갖고 r개 배치
+{
+	if (vc.size() == r)
+	{
+		int flag = 0;
+		for (auto i : vc)
+		{
+			if (i == 1)
+			{
+				flag = 1;
+				break;
+			}
+		}
+		if (flag == 1)
+		{
+			for (auto i : vc)
+			{
+				que.push(i);
+			}
+			
+			result.push_back(cal());
+		}
+		return;
+	}
+
+	for (int i = cnt; i <= n; i++)
+	{
+		if (vc.size() < r)
+		{
+			vc.push_back(i);
+			dfs(i, n, r);
+			vc.pop_back();
+		}
+	}
+	
+}
+
+int main()
+{
+	int test_case;
+	scanf("%d", &test_case);
+
+	for (int a = 1; a <= test_case; a++)
+	{
+		scanf("%d %d", &hang, &yeol);
+		//0->w 1->b 2->r
+		int count1 = 0;
+		int count2 = 0;
+		getchar();
+		for (int i = 0; i < hang; i++)
+		{
+			for (int j = 0; j < yeol; j++)
+			{
+				scanf("%c", &map[i][j]);
+			}
+			getchar();
+		}
+		
+		for (int i = 0; i < hang; i++)
+		{
+			for (int j = 0; j < yeol; j++)
+			{
+				if (map[i][j] == 'W')
+					intmap[i][j] = 0;
+				else if (map[i][j] == 'B')
+					intmap[i][j] = 1;
+				else
+					intmap[i][j] = 2;
+			}
+		}
+		
+		for (int i = 0; i < yeol; i++)
+		{
+			if (map[0][i] != 'W')
+				count1++;
+
+			if (map[hang - 1][i] != 'R')
+				count2++;
+		}
+		
+		dfs(0, 2, hang - 2);//0부터2까지 (0,1,2)를 갖고 hang-2개 만큼 뽑기
+		sort(result.begin(), result.end());
+		
+		printf("#%d %d\n", a, result.front() + count1 + count2);
+		vc.clear();
+		result.clear();
+
 	}
 }

@@ -1,3 +1,5 @@
 ﻿  main.cpp
+c:\users\admin\documents\visual studio 2015\algorithm_study\hjw\src\week07\중복순열조합\중복순열조합\main.cpp(60): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+c:\users\admin\documents\visual studio 2015\algorithm_study\hjw\src\week07\중복순열조합\중복순열조합\main.cpp(81): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
   중복순열조합.vcxproj -> C:\Users\admin\Documents\Visual Studio 2015\algorithm_study\hjw\src\week07\중복순열조합\Debug\중복순열조합.exe
   중복순열조합.vcxproj -> C:\Users\admin\Documents\Visual Studio 2015\algorithm_study\hjw\src\week07\중복순열조합\Debug\중복순열조합.pdb (Full PDB)
