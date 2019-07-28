@@ -1,0 +1,4 @@
+﻿  main.cpp
+c:\users\admin\documents\visual studio 2015\algorithm_study\hjw\src\week09\solution_1940_가랏rc카\solution_1940_가랏rc카\main.cpp(39): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  Solution_1940_가랏rc카.vcxproj -> C:\Users\admin\Documents\Visual Studio 2015\algorithm_study\hjw\src\week09\Solution_1940_가랏rc카\Debug\Solution_1940_가랏rc카.exe
+  Solution_1940_가랏rc카.vcxproj -> C:\Users\admin\Documents\Visual Studio 2015\algorithm_study\hjw\src\week09\Solution_1940_가랏rc카\Debug\Solution_1940_가랏rc카.pdb (Full PDB)

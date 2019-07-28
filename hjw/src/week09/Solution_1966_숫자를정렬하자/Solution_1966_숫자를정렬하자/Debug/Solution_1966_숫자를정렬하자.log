@@ -1,0 +1,9 @@
+﻿  main.cpp
+c:\users\admin\documents\visual studio 2015\algorithm_study\hjw\src\week09\solution_1966_숫자를정렬하자\solution_1966_숫자를정렬하자\main.cpp(9): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1270): note: 'scanf' 선언을 참조하십시오.
+c:\users\admin\documents\visual studio 2015\algorithm_study\hjw\src\week09\solution_1966_숫자를정렬하자\solution_1966_숫자를정렬하자\main.cpp(14): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1270): note: 'scanf' 선언을 참조하십시오.
+c:\users\admin\documents\visual studio 2015\algorithm_study\hjw\src\week09\solution_1966_숫자를정렬하자\solution_1966_숫자를정렬하자\main.cpp(19): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1270): note: 'scanf' 선언을 참조하십시오.
+  Solution_1966_숫자를정렬하자.vcxproj -> C:\Users\admin\Documents\Visual Studio 2015\algorithm_study\hjw\src\week09\Solution_1966_숫자를정렬하자\Debug\Solution_1966_숫자를정렬하자.exe
+  Solution_1966_숫자를정렬하자.vcxproj -> C:\Users\admin\Documents\Visual Studio 2015\algorithm_study\hjw\src\week09\Solution_1966_숫자를정렬하자\Debug\Solution_1966_숫자를정렬하자.pdb (Full PDB)

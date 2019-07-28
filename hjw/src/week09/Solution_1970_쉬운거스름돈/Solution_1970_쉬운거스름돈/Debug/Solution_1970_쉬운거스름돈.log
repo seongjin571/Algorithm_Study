@@ -1,0 +1,7 @@
+﻿  main.cpp
+c:\users\admin\documents\visual studio 2015\algorithm_study\hjw\src\week09\solution_1970_쉬운거스름돈\solution_1970_쉬운거스름돈\main.cpp(8): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1270): note: 'scanf' 선언을 참조하십시오.
+c:\users\admin\documents\visual studio 2015\algorithm_study\hjw\src\week09\solution_1970_쉬운거스름돈\solution_1970_쉬운거스름돈\main.cpp(13): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1270): note: 'scanf' 선언을 참조하십시오.
+  Solution_1970_쉬운거스름돈.vcxproj -> C:\Users\admin\Documents\Visual Studio 2015\algorithm_study\hjw\src\week09\Solution_1970_쉬운거스름돈\Debug\Solution_1970_쉬운거스름돈.exe
+  Solution_1970_쉬운거스름돈.vcxproj -> C:\Users\admin\Documents\Visual Studio 2015\algorithm_study\hjw\src\week09\Solution_1970_쉬운거스름돈\Debug\Solution_1970_쉬운거스름돈.pdb (Full PDB)

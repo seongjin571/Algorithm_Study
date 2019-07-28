@@ -1,0 +1,4 @@
+﻿  main.cpp
+c:\users\admin\documents\visual studio 2015\algorithm_study\hjw\src\week09\solutiion_최빈수구하기\solutiion_최빈수구하기\main.cpp(23): warning C4101: 'n' :참조되지 않은 지역 변수입니다.
+  Solutiion_최빈수구하기.vcxproj -> C:\Users\admin\Documents\Visual Studio 2015\algorithm_study\hjw\src\week09\Solutiion_최빈수구하기\Debug\Solutiion_최빈수구하기.exe
+  Solutiion_최빈수구하기.vcxproj -> C:\Users\admin\Documents\Visual Studio 2015\algorithm_study\hjw\src\week09\Solutiion_최빈수구하기\Debug\Solutiion_최빈수구하기.pdb (Full PDB)
