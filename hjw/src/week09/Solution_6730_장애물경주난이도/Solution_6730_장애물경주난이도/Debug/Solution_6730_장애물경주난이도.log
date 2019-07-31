@@ -1,0 +1,9 @@
+﻿  main.cpp
+c:\users\admin\documents\visual studio 2015\algorithm_study\hjw\src\week09\solution_6730_장애물경주난이도\solution_6730_장애물경주난이도\main.cpp(55): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1270): note: 'scanf' 선언을 참조하십시오.
+c:\users\admin\documents\visual studio 2015\algorithm_study\hjw\src\week09\solution_6730_장애물경주난이도\solution_6730_장애물경주난이도\main.cpp(60): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1270): note: 'scanf' 선언을 참조하십시오.
+c:\users\admin\documents\visual studio 2015\algorithm_study\hjw\src\week09\solution_6730_장애물경주난이도\solution_6730_장애물경주난이도\main.cpp(64): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1270): note: 'scanf' 선언을 참조하십시오.
+  Solution_6730_장애물경주난이도.vcxproj -> C:\Users\admin\Documents\Visual Studio 2015\algorithm_study\hjw\src\week09\Solution_6730_장애물경주난이도\Debug\Solution_6730_장애물경주난이도.exe
+  Solution_6730_장애물경주난이도.vcxproj -> C:\Users\admin\Documents\Visual Studio 2015\algorithm_study\hjw\src\week09\Solution_6730_장애물경주난이도\Debug\Solution_6730_장애물경주난이도.pdb (Full PDB)
