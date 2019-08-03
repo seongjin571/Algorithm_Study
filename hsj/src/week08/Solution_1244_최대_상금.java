@@ -18,31 +18,31 @@ public class Solution_1244_최대_상금 {
 	static int maxNum;
 	static char[] newArrClone = null;
 
-	static void getIdx(int idx, int cnt, int changeCnt, char[] charArrClone) {
+	static void getIdx(int idx, int cnt, int changeCnt) {
 		if (flag) {
 			if (cnt == 2) {
-				for (int i = 0; i < numLength; i++) {
-					newArrClone[i] = charArrClone[i];
-				}
-				char temp = newArrClone[arr[0]];
-				newArrClone[arr[0]] = newArrClone[arr[1]];
-				newArrClone[arr[1]] = temp;
-				int score = Integer.parseInt(new String(newArrClone));
+				int arr1 = arr[0];
+				int arr2 = arr[1];
+				char temp = charArrClone[arr1];
+				char temp2 = charArrClone[arr2];
+				charArrClone[arr1] = temp2;
+				charArrClone[arr2] = temp;
+				int score = Integer.parseInt(new String(charArrClone));
 				if (changeCnt == totalCnt) {
 					if (maxScore < score)
 						maxScore = score;
 					if(maxScore == maxNum) 
 						flag = false;
-					newArrClone[arr[1]] = newArrClone[arr[0]];
-					newArrClone[arr[0]] = temp;
 				} else {
-					getIdx(0, 0, changeCnt + 1, newArrClone);
+					getIdx(0, 0, changeCnt + 1);
 				}
+				charArrClone[arr1] = temp;
+				charArrClone[arr2] = temp2;
 				return;
 			}
 			for (int i = idx; i < numLength; i++) {
 				arr[cnt] = i;
-				getIdx(i + 1, cnt + 1, changeCnt, charArrClone);
+				getIdx(i + 1, cnt + 1, changeCnt);
 				arr[cnt] = 0;
 			}
 		}
@@ -75,7 +75,7 @@ public class Solution_1244_최대_상금 {
 				charArrClone[j] = charArr[j];
 			}
 			arr = new int[2];
-			getIdx(0, 0, 1, charArrClone);
+			getIdx(0, 0, 1);
 			System.out.println("#" + i + " " + maxScore);
 		}
 	}
