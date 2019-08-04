@@ -1,8 +1,6 @@
 package week08;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class Solution_1244_최대_상금 {
@@ -11,23 +9,20 @@ public class Solution_1244_최대_상금 {
 	static String num;
 	static char[] charArr;
 	static int maxScore = 0;
-	static char[] charArrClone;
 	static int totalCnt = 0;
-	static List<int[]> list = new ArrayList<>();
 	static boolean flag = true;
 	static int maxNum;
-	static char[] newArrClone = null;
 
 	static void getIdx(int idx, int cnt, int changeCnt) {
 		if (flag) {
 			if (cnt == 2) {
 				int arr1 = arr[0];
 				int arr2 = arr[1];
-				char temp = charArrClone[arr1];
-				char temp2 = charArrClone[arr2];
-				charArrClone[arr1] = temp2;
-				charArrClone[arr2] = temp;
-				int score = Integer.parseInt(new String(charArrClone));
+				char temp = charArr[arr1];
+				char temp2 = charArr[arr2];
+				charArr[arr1] = temp2;
+				charArr[arr2] = temp;
+				int score = Integer.parseInt(new String(charArr));
 				if (changeCnt == totalCnt) {
 					if (maxScore < score)
 						maxScore = score;
@@ -36,8 +31,8 @@ public class Solution_1244_최대_상금 {
 				} else {
 					getIdx(0, 0, changeCnt + 1);
 				}
-				charArrClone[arr1] = temp;
-				charArrClone[arr2] = temp2;
+				charArr[arr1] = temp;
+				charArr[arr2] = temp2;
 				return;
 			}
 			for (int i = idx; i < numLength; i++) {
@@ -64,16 +59,11 @@ public class Solution_1244_최대_상금 {
 			charArr = num.toCharArray();
 			char[] sortArr = num.toCharArray();
 			numLength = num.length();
-			newArrClone = new char[numLength];
 			Arrays.sort(sortArr);
 			for(int j = numLength-1; j >= 0; j--) {
 				sb.append(sortArr[j]);
 			}
 			maxNum = Integer.parseInt(sb.toString());
-			charArrClone = new char[numLength];
-			for (int j = 0; j < numLength; j++) {
-				charArrClone[j] = charArr[j];
-			}
 			arr = new int[2];
 			getIdx(0, 0, 1);
 			System.out.println("#" + i + " " + maxScore);
