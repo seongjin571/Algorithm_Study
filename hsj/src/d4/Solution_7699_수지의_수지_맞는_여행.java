@@ -23,10 +23,6 @@ public class Solution_7699_수지의_수지_맞는_여행 {
 				cnt--;
 				visit[map[newX][newY] - 'A'] = false;
 			} 
-//			else if (-1 < newX && newX < xSize && -1 < newY && newY < ySize && visit[map[newX][newY] - 'A']) {
-//				if (maxCnt < cnt)
-//					maxCnt = cnt;
-//			}
 		}
 		if (maxCnt < cnt)
 			maxCnt = cnt;
