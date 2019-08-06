@@ -1,0 +1,9 @@
+﻿  main.cpp
+c:\users\admin\documents\visual studio 2015\algorithm_study\hjw\src\week10\solution_6958_동철이의프로그래밍대회\solution_6958_동철이의프로그래밍대회\main.cpp(44): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1270): note: 'scanf' 선언을 참조하십시오.
+c:\users\admin\documents\visual studio 2015\algorithm_study\hjw\src\week10\solution_6958_동철이의프로그래밍대회\solution_6958_동철이의프로그래밍대회\main.cpp(49): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1270): note: 'scanf' 선언을 참조하십시오.
+c:\users\admin\documents\visual studio 2015\algorithm_study\hjw\src\week10\solution_6958_동철이의프로그래밍대회\solution_6958_동철이의프로그래밍대회\main.cpp(55): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1270): note: 'scanf' 선언을 참조하십시오.
+  Solution_6958_동철이의프로그래밍대회.vcxproj -> C:\Users\admin\Documents\Visual Studio 2015\algorithm_study\hjw\src\week10\Solution_6958_동철이의프로그래밍대회\Debug\Solution_6958_동철이의프로그래밍대회.exe
+  Solution_6958_동철이의프로그래밍대회.vcxproj -> C:\Users\admin\Documents\Visual Studio 2015\algorithm_study\hjw\src\week10\Solution_6958_동철이의프로그래밍대회\Debug\Solution_6958_동철이의프로그래밍대회.pdb (Full PDB)
