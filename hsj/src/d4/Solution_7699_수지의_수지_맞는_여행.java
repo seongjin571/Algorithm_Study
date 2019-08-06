@@ -22,7 +22,7 @@ public class Solution_7699_수지의_수지_맞는_여행 {
 				doDFS(newX, newY);
 				cnt--;
 				visit[map[newX][newY] - 'A'] = false;
-			} 
+			}
 		}
 		if (maxCnt < cnt)
 			maxCnt = cnt;
