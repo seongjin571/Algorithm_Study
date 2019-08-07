@@ -32,7 +32,6 @@ public class Main_11559_Puyo_Puyo {
 				}
 			}
 		}
-
 		return puyoCnt;
 	}
 
