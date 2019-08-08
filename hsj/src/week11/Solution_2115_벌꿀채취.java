@@ -23,15 +23,16 @@ public class Solution_2115_벌꿀채취 {
 			for (int i = 0; i < cnt2; i++) {
 				sum2 += list3.get(arr[i]);
 			}
-			if (sum2 > maxHoney) {
+			if (sum2 <= maxHoney) {
 				int sum = 0;
 				for (int i = 0; i < cnt2; i++) {
 					sum += list3.get(arr[i]) * list3.get(arr[i]);
-					System.out.println(sum);
-					if (maxNum < sum) {
-						maxNum = sum;
-						arr2[order] = maxNum;
-					}
+//					System.out.println(sum);
+				}
+				if (maxNum < sum) {
+					System.out.println(maxNum + "  "+ sum);
+					maxNum = sum;
+					arr2[order] = maxNum;
 				}
 			}
 			return;
@@ -50,7 +51,6 @@ public class Solution_2115_벌꿀채취 {
 				if (y + honeyCnt > mapSize)
 					continue;
 				if (!visit[x][y]) {
-					maxNum = 0;
 					int sum = 0;
 					for (int a = 0; a < honeyCnt; a++) {
 						list.add(map[x][y + a]);
@@ -65,21 +65,25 @@ public class Solution_2115_벌꿀채취 {
 							arr = new int[l];
 							getMaxHoney(x, y, 0, 0, l, cnt);
 						}
-						list3.clear();
+//						list3.clear();
 						break;
 					}
 					else {
 						int sum3 = 0;
 						for (int a = 0; a < honeyCnt; a++) {
 							sum3 += map[x][y + a] * map[x][y + a];
-							if(arr2[cnt] < sum3)
-								arr2[cnt] = sum3;
 						}
+						if(arr2[cnt] < sum3)
+							arr2[cnt] = sum3;
 					}
 				}
 			}
-			if (cnt == 0)
+			list.clear();
+			list3.clear();
+			if (cnt == 0) {
+				maxNum = 0;
 				chooseHoney(list2, cnt + 1);
+			}
 		}
 	}
 
@@ -98,6 +102,7 @@ public class Solution_2115_벌꿀채취 {
 					map[x][y] = scan.nextInt();
 				}
 			}
+			maxNum = 0;
 			chooseHoney(list, 0);
 			System.out.println("ss" + arr2[0] + "  " + arr2[1]);
 			int result = arr2[0] + arr2[1];
