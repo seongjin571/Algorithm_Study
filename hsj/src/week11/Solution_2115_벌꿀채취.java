@@ -16,6 +16,7 @@ public class Solution_2115_벌꿀채취 {
 	static int[] arr2 = new int[2];
 	static int[] arr = null;
 	static int maxNum = 0;
+	static int maxNum2 = 0;
 
 	static void getMaxHoney(int x, int y, int cnt, int idx, int cnt2 , int order) {
 		if (cnt == cnt2) {
@@ -29,10 +30,19 @@ public class Solution_2115_벌꿀채취 {
 					sum += list3.get(arr[i]) * list3.get(arr[i]);
 //					System.out.println(sum);
 				}
+				if(order == 0) {
 				if (maxNum < sum) {
-					System.out.println(maxNum + "  "+ sum);
+					System.out.println(maxNum + " s "+ sum);
 					maxNum = sum;
 					arr2[order] = maxNum;
+				}
+				}
+				else {
+					if (maxNum2 < sum) {
+						System.out.println(maxNum2 + "  "+ sum);
+						maxNum2 = sum;
+						arr2[order] = maxNum2;
+					}
 				}
 			}
 			return;
@@ -81,7 +91,7 @@ public class Solution_2115_벌꿀채취 {
 			list.clear();
 			list3.clear();
 			if (cnt == 0) {
-				maxNum = 0;
+				maxNum2 = 0;
 				chooseHoney(list2, cnt + 1);
 			}
 		}
