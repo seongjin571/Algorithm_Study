@@ -13,10 +13,12 @@ public class Solution4530_극한의_청소_작업 {
 			if(finish > 0) {
 				long finishClone = finish;
 				long finishClone2 = finish;
-				int cnt2 = 10;
+				int cnt2 = 1;
 				int cnt3 = 0;
 				while(true) {
-					int num = 0;
+					cnt2 *= 10;
+					
+					long num = 0;
 					if(finishClone / 10 > 0) {
 						num = finishClone%cnt2;
 					}
