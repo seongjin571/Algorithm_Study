@@ -1,91 +1,93 @@
 package week11;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
-public class Solution_2115_벌꿀채취 {
-	static int mapSize = 0;
-	static int honeyCnt = 0;
-	static int maxHoney = 0;
-	static int[][] map = null;
-	static boolean[][] visit = null;
-	static List<Integer> list = new ArrayList<>();
-	static int[] arr2 = new int[2];
-	static int[] arr = null;
-	static int maxNum = 0;
-	static int maxNum2 = 0;
+class Bee {
+	int x, y, beeSize;
 
-	static void getMaxHoney(int x, int y, int cnt, int idx, int cnt2, int order) {
-		if (cnt == cnt2) {
-			int sum2 = 0;
-			for (int i = 0; i < cnt2; i++) {
-				sum2 += list.get(arr[i]);
+	Bee(int x, int y, int beeSize) {
+		this.x = x;
+		this.y = y;
+		this.beeSize = beeSize;
+	}
+}
+
+public class Solution_2115_벌꿀채취 {
+	static int[][] map = null;
+	static int beeCnt = 0;
+	static int maxBee = 0;
+	static int[] beeArr = null;
+	static int maxNum = 0;
+	static List<Bee> list = new ArrayList<>();
+	static List<Integer> beeList = new ArrayList<>();
+	static int[] arr = new int[2];
+	
+	static void doDFSBee(int idx, int cnt) {
+		if(cnt == 2) {
+			Bee bee1 = list.get(arr[0]);
+			Bee bee2 = list.get(arr[1]);
+			int yDis = Math.abs(bee1.y - bee2.y);
+			if(bee1.x != bee2.x || yDis >= beeCnt) {
+				beeList.add(bee1.beeSize + bee2.beeSize);
 			}
-			if (sum2 <= maxHoney) {
-				int sum = 0;
-				for (int i = 0; i < cnt2; i++) {
-					sum += list.get(arr[i]) * list.get(arr[i]);
-//					System.out.println(sum);
-				}
-				if (order == 0) {
-					if (maxNum < sum) {
-						System.out.println(maxNum + " s " + sum);
-						maxNum = sum;
-						arr2[order] = maxNum;
-					}
-				} else {
-					if (maxNum2 < sum) {
-						System.out.println(maxNum2 + "  " + sum);
-						maxNum2 = sum;
-						arr2[order] = maxNum2;
-					}
+			return;
+		}
+		for(int i = idx; i < list.size(); i++) {
+			arr[cnt] = i;
+			doDFSBee(i + 1, cnt + 1);
+			arr[cnt] = 0;
+		}
+	}
+	
+	static void doDFS(int x, int y, int size, int idx, int cnt) {
+		if(cnt == size) {
+			int sum = 0;
+			for(int i = 0; i < cnt; i++) {
+				sum += map[x][y + beeArr[i]];
+			}
+			int num = 0;
+			if(sum <= maxBee) {
+				for(int i = 0; i < cnt; i++) {
+					num += map[x][y + beeArr[i]] * map[x][y + beeArr[i]];
+					if(num > maxNum) maxNum = num;
 				}
 			}
 			return;
 		}
-		for (int i = idx; i < honeyCnt; i++) {
-			arr[cnt] = i;
-			getMaxHoney(x, y, cnt + 1, i + 1, cnt2, order);
-			arr[cnt] = 0;
+		for(int i = idx; i < beeCnt; i++) {
+			beeArr[cnt] = i;
+			doDFS(x, y, size, i + 1, cnt + 1);
+			beeArr[cnt] = 0;
 		}
 	}
-
-	static void chooseHoney(int cnt) {
-		for (int x = 0; x < mapSize; x++) {
-			for (int y = 0; y < mapSize; y++) {
-				if (y + honeyCnt > mapSize)
-					continue;
-				if (!visit[x][y]) {
-					int sum = 0;
-					for (int a = 0; a < honeyCnt; a++) {
-						list.add(map[x][y + a]);
-						sum += map[x][y + a];
-						visit[x][y + a] = true;
-
-					}
-					if (sum > maxHoney) {
-						for (int l = 1; l < honeyCnt; l++) {
-							arr = new int[l];
-							getMaxHoney(x, y, 0, 0, l, cnt);
-						}
-//						list3.clear();
-						break;
-					} else {
-						int sum3 = 0;
-						for (int a = 0; a < honeyCnt; a++) {
-							sum3 += map[x][y + a] * map[x][y + a];
-						}
-						if (arr2[cnt] < sum3)
-							arr2[cnt] = sum3;
-					}
-				}
+	
+	static void getMaxBee(int x, int y) {
+		int sum = 0;
+		maxNum = 0;
+		for (int i = 0; i < beeCnt; i++) {
+			sum += map[x][y + i];
+		}
+		
+		if (sum <= maxBee) {
+			for (int i = 0; i < beeCnt; i++) {
+				maxNum += map[x][y + i] * map[x][y + i];
 			}
-			list.clear();
-			if (cnt == 0) {
-				maxNum2 = 0;
-				chooseHoney(cnt + 1);
+			list.add(new Bee(x, y, maxNum));
+		}
+		else {
+			for(int i = 0; i < beeCnt; i++) {
+				int num = map[x][y + i] * map[x][y + i];
+				if(maxNum < num) maxNum = num;
 			}
+			
+			for(int i = 2; i < beeCnt; i++) {
+				beeArr = new int[i];
+				doDFS(x, y, i, 0, 0);
+			}
+			list.add(new Bee(x, y, maxNum));
 		}
 	}
 
@@ -93,23 +95,26 @@ public class Solution_2115_벌꿀채취 {
 		Scanner scan = new Scanner(System.in);
 		int testCnt = scan.nextInt();
 		for (int i = 1; i <= testCnt; i++) {
-			arr2 = new int[2];
-			mapSize = scan.nextInt();
-			honeyCnt = scan.nextInt();
-			maxHoney = scan.nextInt();
+			list.clear();
+			beeList.clear();
+			int mapSize = scan.nextInt();
 			map = new int[mapSize][mapSize];
-			visit = new boolean[mapSize][mapSize];
-			for (int x = 0; x < mapSize; x++) {
-				for (int y = 0; y < mapSize; y++) {
-					map[x][y] = scan.nextInt();
+			beeCnt = scan.nextInt();
+			maxBee = scan.nextInt();
+			for (int j = 0; j < mapSize; j++) {
+				for (int k = 0; k < mapSize; k++) {
+					map[j][k] = scan.nextInt();
 				}
 			}
-			maxNum = 0;
-			chooseHoney(0);
-			System.out.println("ss" + arr2[0] + "  " + arr2[1]);
-			int result = arr2[0] + arr2[1];
-			System.out.println("#" + i + " " + result);
+			for (int x = 0; x < mapSize; x++) {
+				for (int y = 0; y < mapSize - beeCnt + 1; y++) {
+					getMaxBee(x, y);
+				}
+			}
+			
+			doDFSBee(0, 0);
+			Collections.sort(beeList);
+			System.out.println("#" + i + " " + beeList.get(beeList.size() - 1));
 		}
 	}
-
 }
