@@ -61,7 +61,7 @@ void ex(int x, int y, int cnt)
 {
 	cnt += map[x][y];
 	int temp = cnt;
-	if (y + 2 < m)
+	if (y + 2 < m)//で ぬ
 	{
 		for (int i = 1; i < 3; i++)
 		{
@@ -88,7 +88,7 @@ void ex(int x, int y, int cnt)
 	}
 
 	int temp3 = cnt;
-	if (x + 2 < n)
+	if (x + 2 < n)// っ た
 	{
 		for (int i = 1; i < 3; i++)
 		{
