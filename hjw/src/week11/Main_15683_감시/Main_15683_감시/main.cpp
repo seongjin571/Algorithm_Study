@@ -56,7 +56,7 @@ void go3(int x, int y)//À§·Î
 			test[i][y] = -1;
 	}
 }
-void do_test()
+void start()
 {
 	for (int i = 0; i < n; i++)
 	{
@@ -169,7 +169,7 @@ void go(int index)
 {
 	if (index == cctv_size)
 	{
-		do_test();
+		start();
 		return;
 	}
 
