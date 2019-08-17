@@ -1,0 +1,4 @@
+﻿  main.cpp
+c:\users\admin\documents\visual studio 2015\algorithm_study\hjw\src\week11\main_15683_감시\main_15683_감시\main.cpp(69): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  Main_15683_감시.vcxproj -> C:\Users\admin\Documents\Visual Studio 2015\algorithm_study\hjw\src\week11\Main_15683_감시\Debug\Main_15683_감시.exe
+  Main_15683_감시.vcxproj -> C:\Users\admin\Documents\Visual Studio 2015\algorithm_study\hjw\src\week11\Main_15683_감시\Debug\Main_15683_감시.pdb (Full PDB)
