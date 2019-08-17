@@ -45,5 +45,5 @@ public class Solution4530_극한의_청소_작업 {
 			System.out.println("#" + i + " " + cnt);
 		}
 	}
-
+ 
 }
