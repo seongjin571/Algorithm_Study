@@ -10,12 +10,15 @@ public class qwd {
 		arr[0] = 1;
 		arr[1] = 2;
 		list.add(arr);
-		arr = new int[2];
-		arr[0] = 5;
-		arr[1] = 55;
-		list.add(arr);
-		for(int[] i : list) {
-			System.out.println(i[0]);
+		int[] arr2 = new int[2];
+		arr2[0] = 44;
+		arr2[1] = 30;
+		list.add(arr2);
+		for(int[] arr3 : list) {
+			arr3[1] = 32323;
+		}
+		for(int[] arr4 : list) {
+			System.out.println(arr4[1]);
 		}
 	}
 	
