@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 class Cell {
 	int x, y, direct, size, idx;
-	boolean die, tempDie, trash, move;
+	boolean die, trash, move;
 
 	Cell(int x, int y, int direct, int size, int idx) {
 		this.x = x;
@@ -15,7 +15,6 @@ class Cell {
 		this.size = size;
 		this.idx = idx;
 		this.die = false;
-		this.tempDie = false;
 		this.move = false;
 		this.trash = false;
 	}
@@ -49,64 +48,85 @@ public class Solution_5648_원자_소멸_시뮬레이션 {
 				list.add(new Cell(x, y, direct, size, j));
 			}
 			int maxDistance = Math.abs(maxNum - minNum);
-			int rotateNum = maxDistance / 2 + 1;
+			int rotateNum = maxDistance % 2 == 0 ? maxDistance / 2 : maxDistance / 2 + 1;
 			map = new int[maxDistance + 1][maxDistance + 1];
-			for(Cell cell : list) {
+			for (Cell cell : list) {
 				cell.x -= minNum;
 				cell.y -= minNum;
 				map[cell.x][cell.y] = cell.idx;
 			}
 			int dieCellCnt = 0;
-			for (int time = 0; time < rotateNum; time++) {
+			for (int time = 0; time < rotateNum * 2; time++) {
+
 				if (dieCellCnt + 1 >= cellNum)
 					break;
 				dieCellCnt = 0;
+				for(int a = 0; a < maxDistance + 1; a++) {
+					for(int b = 0; b < maxDistance + 1; b++) {
+						System.out.print(map[a][b] + " ");
+					}
+					System.out.println("");
+				}
+				System.out.println("");
 				for (Cell cell : list) {
 					if (!cell.die && !cell.trash) {
-						if (map[cell.x][cell.y] == cell.idx)
-							map[cell.x][cell.y] = 0;
-						cell.move = true;
-						cell.x = cell.x + dx[cell.direct];
-						cell.y = cell.y + dy[cell.direct];
-						if (0 > cell.x || cell.x > maxDistance || 0 > cell.y || cell.y > maxDistance) {
+						int newX = cell.x + dx[cell.direct];
+						int newY = cell.y + dy[cell.direct];
+						if (0 > newX || newX > maxDistance || 0 > newY || newY > maxDistance) {
 							cell.trash = true;
+							continue;
 						}
-						else {
-							int reverseDirect = cell.direct % 2 == 0 ? cell.direct + 1 : cell.direct - 1;
+
+						if (time % 2 == 0) {
+							if (map[newX][newY] != 0) {
+								int reverseDirect = cell.direct % 2 == 0 ? cell.direct + 1 : cell.direct - 1;
+								Cell existCell = list.get(map[newX][newY] - 1);
+								if (reverseDirect == existCell.direct) {
+									map[cell.x][cell.y] = 0;
+									map[newX][newY] = 0;
+									existCell.die = true;
+									cell.die = true;
+								}
+							}
+
+						} else {
+							if (map[cell.x][cell.y] == cell.idx)
+								map[cell.x][cell.y] = 0;
+							cell.x = newX;
+							cell.y = newY;
+							cell.move = true;
 							if (map[cell.x][cell.y] != 0) {
 								Cell existCell = list.get(map[cell.x][cell.y] - 1);
-								if (!existCell.die) {
-									if (!existCell.move && reverseDirect == existCell.direct) {
-										existCell.die = true;
-										cell.die = true;
-									} else if (!existCell.move && reverseDirect != existCell.direct) {
-										map[cell.x][cell.y] = cell.idx;
-									} else {
-										existCell.tempDie = true;
-										cell.tempDie = true;
-									}
-
-								} else {
+								if (!existCell.move) {
 									map[cell.x][cell.y] = cell.idx;
+								} else {
+									existCell.die = true;
+									cell.die = true;
 								}
 							} else {
 								map[cell.x][cell.y] = cell.idx;
 							}
+
 						}
 					} else {
 						dieCellCnt++;
 					}
+
 				}
-				for (Cell cell : list) {
-					if (!cell.die) {
-						if (cell.tempDie)
-							cell.die = true;
-						else
+				if (time % 2 != 0) {
+					for (Cell cell : list) {
+						if (!cell.die) {
 							cell.move = false;
+						} else {
+							if (map[cell.x][cell.y] == cell.idx)
+								map[cell.x][cell.y] = 0;
+						}
 					}
 				}
+
 			}
 			for (Cell cell : list) {
+				System.out.println(cell.die);
 				if (cell.die)
 					result += cell.size;
 			}
