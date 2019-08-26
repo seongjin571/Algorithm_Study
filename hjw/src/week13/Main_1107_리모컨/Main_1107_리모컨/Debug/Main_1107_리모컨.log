@@ -1,0 +1,5 @@
+﻿  main.cpp
+c:\users\admin\documents\visual studio 2015\algorithm_study\hjw\src\week13\main_1107_리모컨\main_1107_리모컨\main.cpp(16): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+c:\users\admin\documents\visual studio 2015\algorithm_study\hjw\src\week13\main_1107_리모컨\main_1107_리모컨\main.cpp(33): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  Main_1107_리모컨.vcxproj -> C:\Users\admin\Documents\Visual Studio 2015\algorithm_study\hjw\src\week13\Main_1107_리모컨\Debug\Main_1107_리모컨.exe
+  Main_1107_리모컨.vcxproj -> C:\Users\admin\Documents\Visual Studio 2015\algorithm_study\hjw\src\week13\Main_1107_리모컨\Debug\Main_1107_리모컨.pdb (Full PDB)

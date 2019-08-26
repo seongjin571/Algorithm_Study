@@ -1,0 +1,5 @@
+﻿  main.cpp
+c:\users\admin\documents\visual studio 2015\algorithm_study\hjw\src\week13\solution_1953_탈주범검거\solution_1953_탈주범검거\main.cpp(20): warning C4838: 'double'에서 'int'(으)로의 변환에는 축소 변환이 필요합니다.
+c:\users\admin\documents\visual studio 2015\algorithm_study\hjw\src\week13\solution_1953_탈주범검거\solution_1953_탈주범검거\main.cpp(20): warning C4244: '초기화 중': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Solution_1953_탈주범검거.vcxproj -> C:\Users\admin\Documents\Visual Studio 2015\algorithm_study\hjw\src\week13\Solution_1953_탈주범검거\Debug\Solution_1953_탈주범검거.exe
+  Solution_1953_탈주범검거.vcxproj -> C:\Users\admin\Documents\Visual Studio 2015\algorithm_study\hjw\src\week13\Solution_1953_탈주범검거\Debug\Solution_1953_탈주범검거.pdb (Full PDB)
