@@ -1,0 +1,5 @@
+﻿  main.cpp
+c:\users\admin\documents\visual studio 2015\algorithm_study\hjw\src\week15\main_17140_이차원배열과연산\main_17140_이차원배열과연산\main.cpp(55): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+c:\users\admin\documents\visual studio 2015\algorithm_study\hjw\src\week15\main_17140_이차원배열과연산\main_17140_이차원배열과연산\main.cpp(94): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  Main_17140_이차원배열과연산.vcxproj -> C:\Users\admin\Documents\Visual Studio 2015\algorithm_study\hjw\src\week15\Main_17140_이차원배열과연산\Debug\Main_17140_이차원배열과연산.exe
+  Main_17140_이차원배열과연산.vcxproj -> C:\Users\admin\Documents\Visual Studio 2015\algorithm_study\hjw\src\week15\Main_17140_이차원배열과연산\Debug\Main_17140_이차원배열과연산.pdb (Full PDB)
