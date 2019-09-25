@@ -1,0 +1,5 @@
+﻿  main.cpp
+c:\users\admin\documents\visual studio 2015\algorithm_study\hjw\src\week15\main_14501_퇴사\main_14501_퇴사\main.cpp(33): warning C4101: 'p' :참조되지 않은 지역 변수입니다.
+c:\users\admin\documents\visual studio 2015\algorithm_study\hjw\src\week15\main_14501_퇴사\main_14501_퇴사\main.cpp(33): warning C4101: 't' :참조되지 않은 지역 변수입니다.
+  Main_14501_퇴사.vcxproj -> C:\Users\admin\Documents\Visual Studio 2015\algorithm_study\hjw\src\week15\Main_14501_퇴사\Debug\Main_14501_퇴사.exe
+  Main_14501_퇴사.vcxproj -> C:\Users\admin\Documents\Visual Studio 2015\algorithm_study\hjw\src\week15\Main_14501_퇴사\Debug\Main_14501_퇴사.pdb (Full PDB)
