@@ -79,7 +79,7 @@ public class Solution_1767_프로세서_연결하기 {
 			
 			getRoute(cnt + 1, lineCnt, processCnt);
 
-			if (flag) {
+			if (flag) { 
 				newX = x;
 				newY = y;
 				while (true) {
