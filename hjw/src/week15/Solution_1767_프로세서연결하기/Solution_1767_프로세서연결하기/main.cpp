@@ -1,7 +1,10 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <algorithm>
+#include <cmath>
 using namespace std;
+
 struct info {
 	int core_num;
 	int line_num;
@@ -11,54 +14,210 @@ struct xy {
 	int y;
 };
 int n;
+int temp[13][13];
 int map[13][13];
-int check[13][13];
 vector<xy> core_location;
-void east(int x, int y)
+vector<info>vc;
+bool cmp(const info &p1, const info &p2)
 {
+	if (p1.core_num > p2.core_num)
+		return true;
+	else if (p1.core_num == p2.core_num) {
+		return p1.line_num < p2.line_num;
+	}
+	else
+		return false;
+}
+int draw_line(int now_index, int dir)
+{
+	int cnt = 0;
+	if (dir == 0)//상
+	{
+		for (int i = core_location[now_index].x-1; i >= 0; i--)
+		{
+			temp[i][core_location[now_index].y] = 2;
+			cnt++;
+		}
+		
+	}
+	else if (dir == 1)//하
+	{
+		for (int i = core_location[now_index].x+1; i < n; i++)
+		{
+			temp[i][core_location[now_index].y] = 2;
+			cnt++;
+		}
+		
+	}
+	else if (dir == 2)//좌
+	{
+		for (int i = core_location[now_index].y-1; i >= 0; i--)
+		{
+			temp[core_location[now_index].x][i] = 2;
+			cnt++;
+		}
+		
+	}
+	else if (dir == 3)//우
+	{
+		for (int i = core_location[now_index].y+1; i < n; i++)
+		{
+			temp[core_location[now_index].x][i] = 2;
+			cnt++;
+		}
+		
+	}
+	else if (dir == 4)//그대로
+	{
+		return cnt;
+	}
+	return cnt;
+}
+bool check(int now_index, int dir)
+{
+	bool flag = true;
+	if (dir == 0)//상
+	{
+		for (int i = core_location[now_index].x-1; i >= 0; i--)
+		{
+			if (temp[i][core_location[now_index].y] != 0)
+			{
+				flag = false;
+				break;
+			}
+		}
+		if (flag)
+			return true;
+		else
+			return false;
+	}
+	else if (dir == 1)//하
+	{
+		for (int i = core_location[now_index].x+1; i < n; i++)
+		{
+			if (temp[i][core_location[now_index].y] != 0)
+			{
+				flag = false;
+				break;
+			}
+		}
+		if (flag)
+			return true;
+		else
+			return false;
+	}
+	else if (dir == 2)//좌
+	{
+		for (int i = core_location[now_index].y-1; i >=0; i--)
+		{
+			if (temp[core_location[now_index].x][i] != 0)
+			{
+				flag = false;
+				break;
+			}
+		}
+		if (flag)
+			return true;
+		else
+			return false;
+	}
+	else if (dir == 3)//우
+	{
+		for (int i = core_location[now_index].y+1; i < n; i++)
+		{
+			if (temp[core_location[now_index].x][i] != 0)
+			{
+				flag = false;
+				break;
+			}
+		}
+		if (flag)
+			return true;
+		else
+			return false;
+	}
+	else if (dir == 4)//그대로
+	{
+		return true;
+	}
 
 }
-void west(int x, int y)
+void remove(int now_index,int dir)
 {
+	if (dir == 0)//상
+	{
+		for (int i = core_location[now_index].x-1; i >= 0; i--)
+		{
+			temp[i][core_location[now_index].y] = 0;
+		}
 
-}
-void north(int x, int y)
-{
+	}
+	else if (dir == 1)//하
+	{
+		for (int i = core_location[now_index].x+1; i < n; i++)
+		{
+			temp[i][core_location[now_index].y] = 0;
+		}
 
-}
-void south(int x, int y)
-{
+	}
+	else if (dir == 2)//좌
+	{
+		for (int i = core_location[now_index].y-1; i >= 0; i--)
+		{
+			temp[core_location[now_index].x][i] = 0;
+		}
 
+	}
+	else if (dir == 3)//우
+	{
+		for (int i = core_location[now_index].y+1; i < n; i++)
+		{
+			temp[core_location[now_index].x][i] =0;
+		}
+
+	}
+	else if (dir == 4)//그대로
+	{
+		
+	}
 }
-void go(int index)
+void go(int now_index, int count, int sum,int use_process)
 {
+	if (now_index == count)
+	{
+		vc.push_back({ use_process, sum });
+		return;
+	}
+	else {
+		for (int dir = 0; dir < 5; dir++) {
+			bool b = check(now_index, dir);
+			if (b) {
+				int drawSum = draw_line(now_index, dir);
+				if (dir != 4)
+				{
+					go(now_index + 1, count, sum + drawSum, use_process + 1);
+				}
+				else
+					go(now_index + 1, count, sum + drawSum, use_process);
+				remove(now_index,dir);
+			}
+
+		}
+		
+	}
+}
+void start()
+{
+	int count = core_location.size();
 	for (int i = 0; i < n; i++)
 	{
 		for (int j = 0; j < n; j++)
 		{
-			check[i][j] = map[i][j];
+			temp[i][j] = map[i][j];
 		}
 	}//sample map 생성
-	
-	for (int i = 0; i < core_location.size(); i++)
-	{
-		for (int j = 0; j < 5; j++)
-		{
-			east(core_location[i].x, core_location[i].y);
-			west(core_location[i].x, core_location[i].y);
-			north(core_location[i].x, core_location[i].y);
-			south(core_location[i].x, core_location[i].y);
-			//no_where();
-		}
-	}
-}
-void start(int index)
-{
-	if (index == core_location.size())
-	{
-		go();
-		return;
-	}
+	go(0, count,0,0);
+	sort(vc.begin(), vc.end(), cmp);
 }
 int main()
 {
@@ -78,18 +237,23 @@ int main()
 				}
 			}
 		}
-		int cnt = 0;
-		for (int i = 0; i<core_location.size();)
+
+		for (int i = 0; i < core_location.size();)
 		{
 			if (core_location[i].x == 0 || core_location[i].x == n - 1 || core_location[i].y == 0 || core_location[i].y == n - 1)
 			{
 				core_location.erase(core_location.begin() + i);
-				cnt++;//사이드에 붙어있는 코어의 개수
 			}
 			else
 				i++;
 		}
-		go(0);
+		start();
 		core_location.clear();
+		printf("#%d %d\n", t, vc[0].line_num);
+		vc.clear();
 	}
 }
+//확인
+//그리기
+//재귀
+//지워
